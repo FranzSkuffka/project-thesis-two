@@ -1,0 +1,134 @@
+% arara: xelatex
+
+\documentclass[12pt]{report}
+
+% variables ('commands')
+\newcommand{\authors}{Jill Zander, Marcel Engelmann, Nicole Scherer und Jan Wirth}
+\newcommand{\tabularspacing}{12pt 8pt}
+\newcommand{\version}{1}
+\newcommand{\teamname}{Team SocialCredits}
+
+
+% third party packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[german]{babel}
+\usepackage{verbatimbox}
+\usepackage{tabularx}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+% font
+\usepackage{fontspec}
+
+\setmainfont[
+BoldFont=Times New Roman Bold.ttf,
+ItalicFont=Times New Roman Italic.ttf,
+BoldItalicFont=Times New Roman Bold Italic.ttf
+]{Times New Roman.ttf}
+
+% page margins
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={210mm,297mm},
+ left=30mm,
+ right=25mm,
+ top=25mm,
+ bottom=25mm,
+ }
+
+
+% background image
+\usepackage[pages=some]{background}
+\backgroundsetup{
+scale=1,
+color=black,
+opacity=0.4,
+angle=0,
+contents={%
+  \includegraphics[width=\paperwidth,height=\paperheight]{bg.png}
+  }%
+}
+
+%tabellenkommando
+\newcommand{\fittingtable}[2]{
+    \addvbuffer[\tabularspacing]{
+    \hspace{-0.33cm}
+        \def\arraystretch{1.5}
+    
+        \begin{tabularx}{\textwidth}{#1}
+        #2
+        \end{tabularx}
+
+    }
+}
+
+%abbildungskommando
+\newcommand{\screenshot}[3]{
+    \begin{figure}[ht!]
+    \vspace{0.6cm}
+    \centering
+    \includegraphics[scale=#3]{screenshots/#1.png}
+    \caption{#2}
+    \label{fig:#2}
+    \end{figure}
+}
+% document settings
+\newcommand{\docname}{Sicherheitsbericht: Bolzplatz}
+\title{Sicherheitsbericht: Bolzplatz \normalsize Revision \version }
+\author{\authors}
+\date{\the\day.\the\month.\the\year}
+
+% Paket zum Anpassen von Kopf- und Fußzeilen
+\usepackage[plainfootsepline, plainheadsepline, headsepline, footsepline, automark]{scrpage2}
+
+% Kopf- und Fusszeile löschen
+\clearscrheadfoot
+% Kopf- und Fusszeile aktivieren
+\pagestyle{scrheadings}
+
+
+% Liniendicke
+\setheadsepline{0pt}
+\setfootsepline{0pt}
+
+% Kopf links
+\ihead{\docname}
+\ohead{\teamname}
+
+% Fuss rechts
+\ofoot[\pagemark]{\pagemark}
+
+
+
+% line height
+\usepackage{setspace}
+\onehalfspacing
+
+
+
+%document
+\begin{document}
+\BgThispage
+\maketitle
+
+
+
+\tableofcontents
+
+
+\listoffigures
+\addcontentsline{toc}{chapter}{\listfigurename}
+
+\include{intro}
+\include{overview}
+\include{main}
+\include{last}
+
+
+
+\include{todo}
+
+\end{document}

@@ -1,0 +1,155 @@
+\chapter{Detaillierte Testergebnisse}
+Die Testergebnisse aus der vorherigen Tabelle können noch weiter ausgeführt werden und genau dies geschieht im Folgenden. Die detaillierten Testergebnisse werden sowohl mit einem Erklärungstext als auch mit einem Bild verdeutlicht.
+
+
+\section{Authentifizierungsschwachstellen - AUTHEN }
+
+\paragraph{AUTHEN-000 - Risikoklasse 3}
+Keine Verwendung von HTTPS (Kein Schutz gegen Man in the middle attack). Die Webanwendung “Bolzplatz” verwendet lediglich das Protokoll HTTP und nicht HTTPS. Dadurch ist es möglich, den Netzwerkverkehr mit zu schneiden und so z.B. beim Login an die Benutzerdaten zu gelangen. Es wird empfohlen, von HTTP auf HTTPS umzustellen.
+\screenshot{AUTHEN-000}{Kommunikationsprotokoll}{0.5}
+
+\clearpage
+\paragraph{AUTHEN-001 - Risikoklasse 0}
+Es ist genau fünf mal hintereinander möglich, dass man eine Kombination aus Benutzername und Passwort falsch eingibt. Danach wird man für 30 Minuten gesperrt und kann keine weiteren Eingaben machen. So werden theoretisch Brute-Force Attacken vorgebeugt.
+\screenshot{AUTHEN-001}{Login}{0.4}
+\newline
+Allerdings kann man mit Hilfe der Chrome Developer Tools den Tag disabled=”disabled” entfernen und so die Sperre umgehen.
+\screenshot{AUTHEN-001-1}{Login Formular Attribute}{0.6}
+
+\clearpage
+\paragraph{AUTHEN-002 - Risikoklasse 0}
+Der Hash des Admin-Passworts kann entschlüsselt werden (SHA-1), da es ein sehr einfaches Passwort ist. Es gibt eine sehr ausführliche Tabelle von SHA-1 Hashs. Aus diesem Grund sollte zu dem SHA-1 Hash noch ein weiteres Verfahren verwendet werden, um die Passwörter unkenntlich zu machen. 
+\screenshot{AUTHEN-002}{Entschlüsseltes Passwort}{0.25}
+
+\paragraph{AUTHEN-003 - Risikoklasse 0}
+Sobald man sich registriert hat, erhält man zur Bestätigung eine Email. Diese enthält einen Link, der beim Aufruf die E-Mail Adresse verifiziert. Dieser Link ist nur einmal gültig. Nachdem der Benutzer aktiviert wurde, ist der Link weiterhin aufrufbar, führt allerdings keine Aktion mehr durch.
+\screenshot{AUTHEN-003}{Ungültiger Aktivierungsversuch}{0.25}
+
+\paragraph{AUTHEN-004 - Risikoklasse 0}
+Der Benutzer wird nach 20 Minuten ausgeloggt, wenn keine Interaktion mit der Webanwendung durchführt wird. Dieser Mechanismus beugt Session-Stealing Attacken vor.
+
+\clearpage
+\paragraph{AUTHEN-005 - Risikoklasse 1}
+Es wird beim Login nicht verraten ob der Benutzer existiert.
+\screenshot{AUTHEN-005-1}{Fehlgeschlagener Anmeldungsversuch}{0.4}
+\linebreak
+Allerdings kann man mit Hilfe des Passwort Resets herausfinden, ob eine Mail-Adresse existiert und mithilfe der Registrierung, ob ein Benutzername oder die E-Mail-Adresse existiert. Dies ist eine Sicherheitslücke, da eine Webanwendung keine interne Informationen preisgeben sollte. Aus diesem Grund ist es zu empfehlen, dass die Anwendung eine Fehlermeldung ausgibt, welche keine Daten des Nutzers preisgibt.
+\screenshot{AUTHEN-005}{Passwort Reset}{0.27}
+\screenshot{AUTHEN-005-2}{Registrierung: Benutzername vorhanden}{0.27}
+\screenshot{AUTHEN-005-3}{Registrierung: E-Mail-Adresse vorhanden}{0.27}
+
+\paragraph{AUTHEN-006 - Risikoklasse 0}
+Die Cron-Jobs der Webanwendung funktionieren nicht, da nicht das richtige Passwort für die Datenbank eingetragen ist.
+\screenshot{AUTHEN-006}{Konfiguration der Datenbankverbindung}{0.4}
+
+
+
+\section{Autorisierungsschwachstellen - AUTHOR}
+
+\paragraph{AUTHOR-000 - Risikoklasse 1}
+Es wird der Admin “root” Nutzer von mysql genutzt, um Operationen auf der Datenbank auszuführen. Sollte das Passwort des root-Nutzers sichtbar werden, hat der Angreifer Zugriff auf alle Datenbanken des Servers. Dies ist vor allem deshalb unerwünscht, da das Standartpasswort nicht geändert wurde (Siehe AUTHOR-001).
+\screenshot{AUTHOR-000}{Konfiguration der Datenbankverbindung}{0.4}
+
+\clearpage
+\paragraph{AUTHOR-001 - Risikoklasse 2}
+Das Datenbank-Admin Passwort wurde nicht verändert.
+Um sich in die Datenbank einzuloggen reicht es aus, die Standartwerte für den Benutzernamen und das Passwort zu verwenden. In dem Fall der Web-Anwendung “Bolzplatz” ist der Nutzername “root” und das Passwort “vagrant”. Es wurde ein neuer Nutzer erstellt, allerdings ist dieser in der ausgelieferten Box nicht vorhanden.
+\screenshot{AUTHOR-000}{Konfiguration der Datenbankverbindung}{0.4}
+
+
+\paragraph{AUTHOR-002 - Risikoklasse 3}
+Der Admin-Nutzer kann sich in der Userverwaltung, welche nur als Admin-Nutzer erreichbar ist,  selbst löschen. Anschließend kann sich ein anderer Nutzer als Admin registrieren und so die Verwaltung der gesamten Anwendung übernehmen. Bei dem Löschen des eigenen User-Accounts sollte zumindest nach dem Passwort gefragt werden. Erst anschließend sollte der Nutzer sich löschen können. Das Verhalten der Webanwendung gegenüber des Versuchs des Administrators, sich selbst zu löschen, stellt eine kritische Sicherheitslücke dar.
+\screenshot{AUTHOR-002}{Nutzerverwaltung}{0.26}
+
+\clearpage
+\paragraph{AUTHOR-003 - Risikoklasse 1}
+In der Userverwaltung, welche nur vom Admin-Nutzer aufgerufen werden kann, werden die Eingaben nicht richtig geprüft. Dadurch ist es möglich, Nutzer mit leeren Feldern zu erzeugen. Es sollte nicht möglich sein, einen Benutzer mit einem leeren Nutzernamen zu erzeugen. Cross-Site-Scripting wird durch das Abweisen von Eingaben mit Steuerzeichen vereitelt.
+\screenshot{AUTHOR-003}{Benutzer ohne Name}{0.26}
+
+\paragraph{AUTHOR-004 - Risikoklasse 2}
+Die “php\char`_info” Datei frei zugänglich. Dadurch sind Informationen über die Konfiguration des Servers bekannt. Diese Datei sollte nicht verfügbar sein, da sie möglichen Angreifern entscheidende Hinweise auf Sicherheitslücken geben kann.
+\screenshot{AUTHOR-004}{php\char`_info Log}{0.5}
+
+\clearpage
+\paragraph{AUTHOR-005 - Risikoklasse 1}
+Einige Pfade, die nur für eingeloggte Nutzer erreichbar sein sollten, sind auch für nicht eingeloggte Nutzer sichtbar. \\
+Beispiele: \\
+\url{http://127.0.0.1:50080/bolzplatz/index.php?r=site/highscoregroups} \\
+\url{http://127.0.0.1:50080/bolzplatz/index.php?r=tippgruppe/invite} \\
+Es wäre besser, einen 404-Errorcode mit einem Redirect auf eine dafür eingerichtete Seite an nicht eingeloggte Nutzer zu senden. So wäre es nicht möglich zu wissen, dass es diese Seiten gibt.
+\screenshot{AUTHOR-005}{Verweigerter Zugriff auf Pfad}{0.3}
+
+\paragraph{AUTHOR-006 - Risikoklasse 1}
+Bei dem Zugriff auf eine geschütze Seite, wie z.B. dem Admin-Bereich, ist zu erkennen, dass dieser Bereich existiert (302 Redirect). Dieses Problem kann gelöst werden, indem man einen 404-Errorcode anstatt eines 302-Errorcodes sendet.
+\screenshot{AUTHOR-006}{302 Redirect}{0.3}
+
+
+\clearpage
+\section{Session-Schwachstellen - SESSION}
+
+\paragraph{SESSION-000 - Risikoklasse 1}
+Sobald sich ein Nutzer anmeldet erhält dieser eine neue Session-ID. Diese Session-ID ist eine Zeichenkette aus 26 Zahlen und kleinen Buchstaben. Diese lässt sich erraten. Allerdings ist es sehr unwahrscheinlich, dass 36\textsuperscript{26} Anfragen an den Server gesendet werden, ohne das dies auffällt. Außerdem müsste dieser Angriff relativ schnell durchgeführt werden. Ist der Nutzer inaktiv, so bietet sich ein Zeitraum von genau 20 Minuten, bis die gesuchte Session-ID ungültig wird.
+\screenshot{SESSION-000}{Session-ID}{0.4}
+
+\paragraph{SESSION-001 - Risikoklasse 0}
+Nach dem Login wird die alte Session-ID verworfen und der Nutzer bekommt eine neue Session-ID. Dies erhöht die Sicherheit vor “Session Stealing”.
+
+\paragraph{SESSION-002 - Risikoklasse 3}
+Wenn sich ein Nutzer angemeldet hat, bekommt dieser eine eindeutige Session-ID. Es ist möglich, diese Session-ID mit den Chrome Developer Tools auszulesen. Die z.B. mit Zugriff auf den Rechner entwendete Session-ID lässt sich verwenden, um sich als der mit der Session-ID eingeloggte Nutzer auszugeben. Dies ist vor allem dann kritisch, wenn es sich bei dem eingeloggten Nutzer um den Admin-Nutzer handelt. Dadurch erhält der Angreifer vollen Lese- und Schreibzugriff auf die Nutzer- und Spielverwaltung.
+
+
+\section{Injektionsschwachstellen - INJECTION}
+Durch SQL-Injection können Unbefugte auf Datenbankeinträge zugreifen und diese missbräuchlich verändern. 
+
+\clearpage
+\paragraph{INJECTION-000 - Risikoklasse 1}
+\url{http://127.0.0.1:50080/bolzplatz/index.php?r=tippspiel/destroy} \\
+Das versenden eines Requests mit fehlerhaften Paramter bewirkt die Ausgabe eines PHP-Errors, der kritische Informationen über Implementationsdetails der Webanwendung preisgibt und somit mögliche Sicherheitslücken offenbart.
+\screenshot{INJECTION-000}{PHP Debug Log}{0.4}
+
+\paragraph{INJECTION-001 - Risikoklasse 0}
+Die Eingaben in die Adresszeile des Browsers werden gegen den Einsatz von unerwünschten Zeichen abgesichert. Somit ist es nicht möglich JavaScript Code in der URL einzubinden.
+\screenshot{INJECTION-001}{Adresszeile mit kodierten Steuerungszeichen}{0.4}
+
+\clearpage
+\paragraph{INJECTION-002 - Risikoklasse 0}
+Eingaben, welche Daten in der Datenbank verändern, werden grundsätzlich per POST versendet und sind so nicht in der URL zu erkennen.
+\screenshot{INJECTION-002}{Formularattribute}{0.5}
+
+
+\section{Andere Schwachstellen - OTHER}
+Hier werden Sicherheitstests beschrieben, welche nicht in die bis jetzt behandelten Kategorien passen. 
+
+\paragraph{OTHER-000 - Risikoklasse 2}
+Der Zugriff auf das “protected”-Verzeichnis nicht gesichert. Somit ist der gesamte Quellcode der Applikation öffentlich einsehbar. \\
+\screenshot{OTHER-000}{Protected Verzeichnis}{0.25}
+
+\clearpage
+\paragraph{OTHER-001 - Risikoklasse 0}
+Sowohl das Kontakt-Formular als auch das Registrationsformular besitzen einen vollautomatischen öffentlichen Turing-Test, um Computer und Menschen zu unterscheiden. So wird das automatische Versenden von Massenmails durch z.B. das Kontaktformular vorgebeugt.
+\screenshot{OTHER-001}{Kontaktformular mit Turing-Test}{0.25}
+
+\paragraph{OTHER-002 - Risikoklasse 0}
+Bei Yii wurde die CSRF-Validierung aktiviert. Somit ist es nicht möglich, Steuerzeichen durch die URL an die Applikation zu senden. Ein Beispiel ist hier das einzelne Anführungszeichen (‘), welches von der Anwendung als \texttt{{\%}27} kodiert. Zudem nutzt die Anwendung Cookie-Validation, um die Echtheit des aktuellen Cookies zu sicher zu stellen.
+\screenshot{OTHER-002}{Konfiguration der CSRF-Validierung}{0.4}
+
+\paragraph{OTHER-003 - Risikoklasse 0}
+Das HTTPOnly Attribut wurde für den Session-Cookie gesetzt. Dadurch ist es nicht mehr möglich per JavaScript auf den Cookie zuzugreifen um ihn auszulesen oder zu verändern. Der aktivierte Cross-Site-Scripting Schutz der Anwendung stellt sicher, dass diese Lücke geschlossen ist.
+\screenshot{OTHER-003}{Session Cookie mit HTTP Attribut}{0.25}
+
+
+\paragraph{OTHER-004 - Risikoklasse 1}
+Der Debug-Modus wurde nicht deaktiviert. So werden ausführliche Fehlermeldungen angezeigt, welchen einem Angreifer potenzielle Möglichkeiten aufzeigen könnten.
+\screenshot{OTHER-004}{Konfiguration des Yii-Debug-Modus}{0.4}
+
+
+\paragraph{OTHER-005 - Risikoklasse 1}
+Tabellen und die Parameter von Get-Requests liegen durch den Debug-Mode offen. Außerdem sind weitere Teile des Programm-Codes zu erkennen. Dafür genügt es, an das Ende der URL einfach einen weiteren unbekannten Parameter anzufügen.
+\url{http://127.0.0.1:50080/bolzplatz/index.php?r=user/activate}
+\screenshot{OTHER-005}{PHP Debug Notice: Undefined index: key}{0.25}
+
+
+\clearpage
+\paragraph{OTHER-006 - Risikoklasse 1}
+Es wird nicht überprüft ob der Parameter “Key” vorhanden ist. Ist der Parameter als GET-Variable nicht vorhanden, so stürzt die Anwendung ab. Es sollte in jedem Fall überprüft werden, ob eine bestimmte Variable vorhanden ist. Wenn die Variable nicht vorhanden ist, sollte eine Fehlermeldung ausgegeben werden. \url{http://127.0.0.1:50080/bolzplatz/index.php?r=user/resetpassword&ds=ad}
+\screenshot{OTHER-006}{PHP Debug Notice: Undefined index: key}{0.25}
