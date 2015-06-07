@@ -21,8 +21,16 @@
 \usepackage[T1]{fontenc}
 
 % Schrift festlegen
-\usepackage{lmodern}
+\usepackage{fontspec}
 
+\setmainfont[
+BoldFont=Arial Bold.ttf,
+ItalicFont=Arial Italic.ttf,
+BoldItalicFont=Arial Bold Italic.ttf
+]{Arial.ttf}
+
+\usepackage{titlesec}
+\renewcommand{\sectfont}{\rmfamily}
 % Sprachauswahl für Lokalisierungen und Silbentrennung
 \usepackage[german]{babel}
 
