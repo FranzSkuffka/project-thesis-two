@@ -2,3 +2,9 @@ output
 *.aux
 *.blg
 *.log
+*.bib
+*.out
+*.bbl
+*.pdf
+*.xml
+*.toc
