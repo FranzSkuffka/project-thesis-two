@@ -1,4 +1,5 @@
-% arara: xelatex: {options: -output-directory=./output}
+% arara: xelatex
+%: {options: -output-directory=./output}
 \input{preamble}
 
 \begin{document}
@@ -77,6 +78,8 @@
 
 	
 	\include{content/Introduction}
+	\include{content/main}
+
 	\clearpage
 	
 	% Ab hier weiter mit großen, römischen Seitenzahlen
@@ -89,17 +92,17 @@
 	\ihead[\titel]{\titel}	
 	
 	% Anhang
-	%\addchap{Appendices}
-	%\appendix
-	%\input{content/Anhang}
+	% \addchap{Appendices}
+	% \appendix
+	% \input{content/Anhang}
 	
-	% Beigaben
-	%\include{content/Beigaben}
+	% % Beigaben
+	% \include{content/Beigaben}
 	
-	% Glossar, falls benötigt
-	%\input{content/Glossar}
-	%\makeglossaries
-	%\printglossary
+	% % Glossar, falls benötigt
+	% \input{content/Glossar}
+	% \makeglossaries
+	% \printglossary
 	
 	% Literaturverzeichnis
 	\printbibliography

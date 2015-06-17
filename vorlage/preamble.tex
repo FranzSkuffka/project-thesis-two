@@ -14,9 +14,6 @@
 	abstracton			% Abstract aktivieren
 ]{scrreprt}
 
-% Zeichenkodierung Input ist UTF-8: Umlaute können direkt eingegeben werden
-\usepackage[utf8]{inputenc}
-
 % Zeichenkodierung Ausgabe ist T1-Kodierung: Wichtig für die Ausgabe von Umlauten
 \usepackage[T1]{fontenc}
 
@@ -76,6 +73,7 @@ BoldItalicFont=Arial Bold Italic.ttf
 
 % Paket zum Anpassen von Kopf- und Fußzeilen
 \usepackage[plainfootsepline, plainheadsepline, headsepline, footsepline, automark]{scrpage2}
+\setlength{\headheight}{1.1\baselineskip}
 % Liniendicke
 \setheadsepline{0.1pt}
 \setfootsepline{0.1pt}
@@ -109,7 +107,7 @@ BoldItalicFont=Arial Bold Italic.ttf
 % Literaturverzeichnis
 %\usepackage[backend=bibtex,style=authoryear]{biblatex}
 \usepackage[backend=bibtex,style=alphabetic]{biblatex}
-\bibliography{literature/Literature.bib}
+\bibliography{./literature/Literature.bib}
 \renewcommand{\bibname}{Literaturverzeichnis}
 %Referenz zu URLs
 \usepackage{url}
@@ -128,14 +126,15 @@ BoldItalicFont=Arial Bold Italic.ttf
 \counterwithout{footnote}{chapter}
 
 % Persönliche Daten
-\newcommand{\titel}{Was ist Web 2.0?}
-\newcommand{\art}{Übung zum wissenschaftlichen Arbeiten}
+\newcommand{\titel}{Implementierung eines Systems zur Klassifikation von und Extraktion von Information aus Texten der Domäne CRM}
+\newcommand{\art}{Projektarbeit des zweiten Studienjahres}
 \newcommand{\studienbereich}{Wirtschaft}
 \newcommand{\studiengang}{Onlinemedien}
-\newcommand{\verfasser}{Jill Zander}
+\newcommand{\verfasser}{Jan Wirth}
 \newcommand{\kurs}{ON13}
-\newcommand{\ausbildungsbetrieb}{HITS gGmbH}
-\newcommand{\abgabedatum}{02.03.2014}
+\newcommand{\ausbildungsbetrieb}{visual4 GmbH}
+\newcommand{\betreuer}{Prof. Dr. Arnulf Mester}
+\newcommand{\abgabedatum}{}
 \newcommand{\unterschrift}{\rule{5cm}{0.2pt}}
 
 % Links- und PDF-Einstellungen
