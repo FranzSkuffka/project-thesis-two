@@ -7,33 +7,46 @@ non-tech affinity \cite{hemken}
 human indexing is expensive, cost reduction because expert-labour
 learning by doing encouraged. people get introduced to the problem domain throught the suggestions served by the system.
 Ziel: Klassifikation und Extraktion von Texten
+Operational CRM \cite CRM implementation
 domäne crm, ausgewählte kategorien
+\chapter{Motivation}
+expert-labour is costly
 \chapter{Hauptteil}
+Nachdem die Motivation und Ziele dieser Arbeit dargelegt sowie die Zielgruppe definiert wurde, werden zunächst die funktionalen Anforderungen an das zu implementierende System definiert.
 \section{Funktionale Anforderungen}
+SMARTe Ziele -> Literatur, was ist smartes ziel und wie hilft es hier weiter
+
+
+- ausegehend von liveeinsatz mit echtem nutzer
+- vertrauen ist fragil \cite, d.h. ...
 \subsection{Interaktionsmodell}
+Aus der Perspektive des Interfacedesigns werden in diesem Abschnitt die Anforderungen an die Interaktion mit dem Systems definiert.
+
 definition setting,user scenario,interaction model
 system erhält feedback von nutzer - trainierbar
 interaktionsmodell bzw. lernprozess - learning when something was missed if user enters it and it is also found inside the text
 teilautomatische "interaktive" klassifikation und extraction, weil: trainingsdaten rar? und vertrauen auf den classifier gering.
 \subsection{Datenverarbeitung}
-extensible: insert own types with certain features?
-echte anforderung: email-footer
-fokus auf texte die einer klasse entsprechen
 automatisierte generierung von metadaten, metadaten werden hier das neue zentrum der interessen
 exogenous information - phone note for example on ingoing phone call
+X verschiedene Klassen
+echte anforderung: email-footer
+interaktive Klassifikation bzw. Datenverarbeitung
+extensible: insert own types with certain features?
+fokus auf texte die einer klasse entsprechen
 a priori?
 Simon Mayer becomes Simon Mayer (recognised kind: account)
-
-"Strategy" becomes Strategy timeline with numbers displayed
 \section{Theoretische Herangehensweise}
 Texte fast nie grammatikalisch korrekt
 endogene Information
 problem of notes - bad spelling
 \subsection{Klassifikation der Eingabe}
+Im folgenden wird die theoretische Herangehensweise an die Klassifikation der eingegebenen Daten beleuchtet.
 Categorization - using chrome? for email footer for example
 Occam's Razor?
 characterization - finding features of certain category
 characteration through template?
+Kommandowortsystem?
 \subsection{Extraktion von Information}
 
 \section{Implementierung}
@@ -43,8 +56,11 @@ learning classifiers
 regular expressions
 
 \subsection{Trainingsdatensatz}
+Belegsammlung
+NICHT: Korpora - \cite
 - endogenous knowledge only in paper notes...
 - nonoverlapping categories but multiple categories in one note. -> separation
+problem des trainingsdatensatz: bereits exportierte, verfremdete daten
 \subsection{Implementation des Klassifikationsmechanismus}
 \subsection{Implementation des Extraktionsmechanismus}
 \section{Evaluierung des Systems}
