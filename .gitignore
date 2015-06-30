@@ -8,3 +8,4 @@ output
 *.pdf
 *.xml
 *.toc
+node_modules
