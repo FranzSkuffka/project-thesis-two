@@ -2,7 +2,7 @@ output
 *.aux
 *.blg
 *.log
-*.bib
+*blx.bib
 *.out
 *.bbl
 *.pdf
