@@ -18,6 +18,7 @@
   "homepage": "https://github.com/FranzSkuffka/project-thesis-two",
   "dependencies": {
     "coffee-script": "^1.9.3",
+    "del": "^1.2.0",
     "gulp": "^3.9.0",
     "gulp-shell": "^0.4.2"
   }
