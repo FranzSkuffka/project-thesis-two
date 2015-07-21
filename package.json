@@ -1,0 +1,24 @@
+{
+  "name": "projektarbeit",
+  "version": "0.0.1",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FranzSkuffka/project-thesis-two.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FranzSkuffka/project-thesis-two/issues"
+  },
+  "homepage": "https://github.com/FranzSkuffka/project-thesis-two",
+  "dependencies": {
+    "coffee-script": "^1.9.3",
+    "gulp": "^3.9.0",
+    "gulp-shell": "^0.4.2"
+  }
+}
