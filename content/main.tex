@@ -1,4 +1,55 @@
 \chapter{Einleitung}
+\section{Problemstellung}
+\section{Motivation}
+
+\chapter{Anforderungen}
+\section{Interaktionsmodell}
+? Interaktionsmodell
+Nutzer / Programme relation
+
+1. Neuen Eintrag
+2. Speichern des Eintrags
+3. Bestätigung der erfassten Information
+
+Überleitung
+\section{Funktionale Anforderungen}
+eingaben entgegennehmen
+Typ der eingabe erfassen
+Informationen extrahieren
+Bestätigung der Resultate erfrage, dabei auswahl stellen, weil..
+eingabe und erfasste sowie bestätigte daten speichern
+lernen
+\section{Nichtfunktionale Anforderungen}
+Zuverlässigkeit (Systemreife, Wiederherstellbarkeit, Fehlertoleranz)
+Aussehen und Handhabung (Look and Feel)
+Benutzbarkeit (Verständlichkeit, Erlernbarkeit, Bedienbarkeit)
+Leistung und Effizienz (Antwortzeiten, Ressourcenbedarf, Wirtschaftlichkeit)
+Betrieb und Umgebungsbedingungen
+Wartbarkeit, Änderbarkeit (Analysierbarkeit, Stabilität, Prüfbarkeit, Erweiterbarkeit)
+Portierbarkeit und Übertragbarkeit (Anpassbarkeit, Installierbarkeit, Konformität, Austauschbarkeit)
+Sicherheitsanforderungen (Vertraulichkeit, Informationssicherheit, Datenintegrität, Verfügbarkeit)
+Korrektheit (Ergebnisse fehlerfrei)
+Flexibilität (Unterstützung von Standards)
+Skalierbarkeit (Änderungen des Problemumfangs bewältigen)
+Randbedingungen
+
+
+\chapter{Theoretische Herangehensweise}
+\section{Verarbeitungsprozess}
+\subsection{Klassifikation der Eingabe}
+\subsection{Extraktion von Information}
+\subsection{Bestätigung der Resultate}
+
+\chapter{Implementierung}
+\section{Module}
+\subsection{Klassifikation der Eingabe}
+\subsection{Extraktion von Information}
+\subsection{Bestätigung der Resultate}
+\section{Validierung}
+
+\chapter{Schluss}
+
+
 Ziel dieser Projektarbeit ist die Entwicklung eines Systems, dass es dem Nutzer erlaubt, Information ohne Eingabemaske einzupflegen. Dabei soll die Eingabe automatisch, wenn möglich, einer Klasse in der Problemdomäne CRM zugeordnet werden. Wir betrachten Texte, die nur bedingt prosaisch sind und deshalb nur wenig grammatikalische Strukturen aufweisen. In diesem Fall müssen andere Merkmale zur Verarbeitung der Eingabe berücksichtigt werden.
 Zu Beginn des ersten Teils der Arbeit werden die konkreten funktionalen Anforderungen an das System definiert. Als Nächstes betrachten wir die theoretischen Prozessschritte, die vom Rohtext zum eingeordneten und extrahierten Datensatz führen. Der zweite Teil behandelt die Schwierigkeiten die in Anbetracht der Qualität der Eingabedaten und der technischen Mittel aufkommen sowie diesen entgegengewirkt werden kann. Im Folgenden werden aus den theoretischen Überlegungen abgeleitete systemarchitektonische Strukturen auf die tatsächliche Umsetzung übertragen.
 Zuletzt wird der Erfolg des Systems Anhand der Anforderungen ermittelt und ein Ausblick auf praktische Einsatzmöglichkeiten geboten.
@@ -7,20 +58,13 @@ non-tech affinity \cite{hemken}
 human indexing is expensive, cost reduction because expert-labour
 learning by doing encouraged. people get introduced to the problem domain throught the suggestions served by the system.
 Ziel: Klassifikation und Extraktion von Texten
-Operational CRM \cite CRM implementation
 domäne crm, ausgewählte kategorien
-\chapter{Motivation}
-expert-labour is costly
 \chapter{Hauptteil}
-Nachdem die Motivation und Ziele dieser Arbeit dargelegt sowie die Zielgruppe definiert wurde, werden zunächst die funktionalen Anforderungen an das zu implementierende System definiert.
 \section{Funktionale Anforderungen}
-SMARTe Ziele -> Literatur, was ist smartes ziel und wie hilft es hier weiter
-
-
-- ausegehend von liveeinsatz mit echtem nutzer
-- vertrauen ist fragil \cite, d.h. ...
 \subsection{Interaktionsmodell}
 Aus der Perspektive des Interfacedesigns werden in diesem Abschnitt die Anforderungen an die Interaktion mit dem Systems definiert.
+- ausegehend von liveeinsatz mit echtem nutzer
+- vertrauen ist fragil \cite
 
 definition setting,user scenario,interaction model
 system erhält feedback von nutzer - trainierbar
@@ -29,7 +73,7 @@ teilautomatische "interaktive" klassifikation und extraction, weil: trainingsdat
 \subsection{Datenverarbeitung}
 automatisierte generierung von metadaten, metadaten werden hier das neue zentrum der interessen
 exogenous information - phone note for example on ingoing phone call
-X verschiedene Klassen
+X verschiedene Datentypen
 echte anforderung: email-footer
 interaktive Klassifikation bzw. Datenverarbeitung
 extensible: insert own types with certain features?
@@ -46,7 +90,6 @@ Categorization - using chrome? for email footer for example
 Occam's Razor?
 characterization - finding features of certain category
 characteration through template?
-Kommandowortsystem?
 \subsection{Extraktion von Information}
 
 \section{Implementierung}
@@ -56,8 +99,6 @@ learning classifiers
 regular expressions
 
 \subsection{Trainingsdatensatz}
-Belegsammlung
-NICHT: Korpora - \cite
 - endogenous knowledge only in paper notes...
 - nonoverlapping categories but multiple categories in one note. -> separation
 problem des trainingsdatensatz: bereits exportierte, verfremdete daten
