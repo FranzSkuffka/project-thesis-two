@@ -1,0 +1,65 @@
+
+binäre entscheidung? oder single-label?
+find thesaurus for crm
+binäre entscheidung? oder single-label?
+expert interview - ivan kravchenko?
+recognizing special cases (what did i mean here?????)
+
+Datensätze:
+E-Mail-Footer
+Exporte der CRM-Datensätze
+
+section{Literatur}
+Knowledge‐enabled customer relationship management: integrating customer relationship management and knowledge management concepts
+
+"An Adaptive User Interface Based On Personalized Learning" pdf
+
+
+% sorted out
+eingaben entgegennehmen
+Typ der eingabe erfassen
+Informationen extrahieren
+Bestätigung der Resultate erfrage, dabei auswahl stellen, weil vertrauen ist fragil  correct citation \cite{shneiderman}
+eingabe und erfasste sowie bestätigte daten speichern
+lernen
+Im folgenden werden die Interaktionsmöglichkeiten erarbeitet die das System durch die Benutzeroberfläche bieten soll. Hierbei beschreibt ein Interaktionsschema die einzelnen Schritte die der Nutzer ausführt um aus dem eingegebenen Text den in das entsprechende Schema eingeordneten Datensatz zu erhalten.
+minimal
+Als drittes  wählt der Nutzer den korrekt erfassten Eintrag aus einer Liste von (nach wahrscheinlichkeit sortierten?) Vorschlägen aus
+Jeweils eine einzelne Eingabe soll interaktiv einer Klasse zugeordnet werden.
+Um das System nutzbar zu machen benötigt es eine Benutzeroberfläche, die dem Nutzer das Erfassen, Anzeigen und Auswerten der Daten ermöglicht. Bei der Konzeption der Benutzeroberfläche wird berücksichtigt, dass das System einen Teil des Vorgangs der Datenerfassung automatisiert und somit dem Nutzer die Kontrolle über eben Vorgang entziehen kann. zitat? Ben Shneiderman, XYZ-Mann, beschreibt das Vertrauen zwischen Mensch und Maschine als fragil. Deshalb ist es wichtig, dass das System so funktioniert, dass der potenzielle Kontrollverlust verhindert wird. Die Funktionsweise bezieht sich in erster Linie auf den Prozess des Auswertens und Validieren des erfassten Datensatzes.
+\begin{enumerate}
+\item Nach dem Aufrufen des Systems wird dem Nutzer ein Textfeld offenbart. In dieses Feld gibt der Nutzer seinen Text, z.B. eine Notiz, ein.
+\item Als nächstes bestätigt der Nutzer seine Eingabe.
+\item Aus einer Liste von Vorschlägen wählt der Nutzer den korrekten Typ des Eintrags aus. Wenn der Eintrag keinem Typen zuzuordnen ist, endet der Vorgang hier.
+\item Der Nutzer korrigiert den erfassten Datensatz
+\end{enumerate}
+
+Aus dem Interaktionsschema ergeben sich dann die Anforderungen an das System.
+\section{Nichtfunktionale Anforderungen}
+% Zuverlässigkeit (Systemreife, Wiederherstellbarkeit, Fehlertoleranz)
+% Aussehen und Handhabung (Look and Feel)
+% Benutzbarkeit (Verständlichkeit, Erlernbarkeit, Bedienbarkeit)
+% Leistung und Effizienz (Antwortzeiten, Ressourcenbedarf, Wirtschaftlichkeit)
+% Betrieb und Umgebungsbedingungen
+% Wartbarkeit, Änderbarkeit (Analysierbarkeit, Stabilität, Prüfbarkeit, Erweiterbarkeit)
+% Portierbarkeit und Übertragbarkeit (Anpassbarkeit, Installierbarkeit, Konformität, Austauschbarkeit)
+% Sicherheitsanforderungen (Vertraulichkeit, Informationssicherheit, Datenintegrität, Verfügbarkeit)
+% Korrektheit (Ergebnisse fehlerfrei)
+% Flexibilität (Unterstützung von Standards)
+% Skalierbarkeit (Änderungen des Problemumfangs bewältigen)
+% Randbedingungen
+
+\chapter{Herangehensweise}
+ausegehend von liveeinsatz mit echtem nutzer
+ui
+requirements
+modules
+implementation
+Zuletzt wird der Erfolg des Systems Anhand der Anforderungen ermittelt und ein Ausblick auf praktische Einsatzmöglichkeiten geboten.
+scoping
+not api?
+\section{Benutzeroberfläche}
+für Klassifikation
+interaktive Klassifikation.
+system passiv
+Ziel dieser Projektarbeit ist die Entwicklung eines Systems, dass es dem Nutzer erlaubt, Information ohne Eingabemaske einzupflegen. Dabei soll die Eingabe automatisch, wenn möglich, einer Klasse in der Problemdomäne CRM zugeordnet werden. Wir betrachten Texte, die nur bedingt prosaisch sind und deshalb nur wenig grammatikalische Strukturen aufweisen. In diesem Fall müssen andere Merkmale zur Verarbeitung der Eingabe berücksichtigt werden.

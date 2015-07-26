@@ -1,81 +1,90 @@
 \chapter{Einleitung}
 \section{Problemstellung}
+Eingabeformulare als Barriere
+Konzept extraktion und separate speicherung als Datensatz
 \section{Motivation}
-
-\chapter{Anforderungen}
-\section{Interaktionsmodell}
-? Interaktionsmodell
-Nutzer / Programme relation
-
-1. Neuen Eintrag
-2. Speichern des Eintrags
-3. Bestätigung der erfassten Information
-
-Überleitung
+non-tech affinity \cite{hemken}
+bei großen system fällt Überblick schwer.
+human indexing is expensive, cost reduction because expert-labour \cite{shneiderman}
+\chapter{}
 \section{Funktionale Anforderungen}
-eingaben entgegennehmen
-Typ der eingabe erfassen
-Informationen extrahieren
-Bestätigung der Resultate erfrage, dabei auswahl stellen, weil..
-eingabe und erfasste sowie bestätigte daten speichern
-lernen
-\section{Nichtfunktionale Anforderungen}
-% Zuverlässigkeit (Systemreife, Wiederherstellbarkeit, Fehlertoleranz)
-% Aussehen und Handhabung (Look and Feel)
-% Benutzbarkeit (Verständlichkeit, Erlernbarkeit, Bedienbarkeit)
-% Leistung und Effizienz (Antwortzeiten, Ressourcenbedarf, Wirtschaftlichkeit)
-% Betrieb und Umgebungsbedingungen
-% Wartbarkeit, Änderbarkeit (Analysierbarkeit, Stabilität, Prüfbarkeit, Erweiterbarkeit)
-% Portierbarkeit und Übertragbarkeit (Anpassbarkeit, Installierbarkeit, Konformität, Austauschbarkeit)
-% Sicherheitsanforderungen (Vertraulichkeit, Informationssicherheit, Datenintegrität, Verfügbarkeit)
-% Korrektheit (Ergebnisse fehlerfrei)
-% Flexibilität (Unterstützung von Standards)
-% Skalierbarkeit (Änderungen des Problemumfangs bewältigen)
-% Randbedingungen
+Es wird davon ausgegangen, dass im System Kategorien bzw. Klassen definiert sind, die jeweils ein bestimmtes Schema bzw. eine Vorlage vorgeben. Diese Vorlage bestimmt die Struktur, also die einzelnen Felder einer Instanz dieser Klasse. Eine Instanz stellt hier einen im System zu speichernden Datensatz dar. Als Extraktion wird der Vorgang bezeichnet, bei dem einzelne Entitäten, also die Werte eines Formulars, aus der Eingabe gewonnen werden.
+\begin{enumerate}
+\item Das System soll die Eingabe in Textform entgegen nehmen.
+\item Das System soll jeweils eine Eingabe in eine Vorgegebene Kategorie einordnen.
+\item Danach soll das System die durch die Kategorie bestimmte Vorlage mit aus der Eingabe extrahierten Informationen befüllen.
+\end{enumerate}
 
+
+\chapter{Grundlagen}
+Modelle
+Klassen aus CRM Bereich, problemwiederholung: einordnung. Das heißt:
+domäne crm, ausgewählte kategorien
+Technologien
+Javascript
+
+Klassifikation
+wie haben andere die probleme gelöst
+Erklärung Klassifikation: Zwei typen: supervised vs unsupervised
+
+Extraktion
 
 \chapter{Theoretische Herangehensweise}
-\section{Verarbeitungsprozess}
-\subsection{Klassifikation der Eingabe}
-\subsection{Extraktion von Information}
-\subsection{Bestätigung der Resultate}
+Nach der Definition der funktionalen Anforderungen an das System wird nun die theoretische Herangehensweise beschrieben. Dabei wird die Funktion des Systems in nacheinander geschaltete Mechanismen geteilt.
+\section{Routing}
+Klassen sind vorgegeben, multiclass classification weil CITE WIKIPEDIA
+Ziel: Datensatz
+\section{Merkmale}
+Bei der Entwicklung der Vorgehensweise zur Klassifikation der eingegebenen Texte wird davon ausgegangen, dass keine exogene Information zur Verfügung steht. Das heißt, dass der Klassifikationsmechanismus nicht auf Metadaten wie z.B. Autor oder Uhrzeit zugreifen kann. Somit steht nur endogene Information, also der Inhalt der eingegebenen Texte zur Verfügung. Die Prüfung des Vorhandenseins von Merkmalen beschränkt sich also auf Bereich des Textkörpers.\cite[sebastiano]
 
+characterization - finding features of certain category
+Tabellenspalte > Absoluter Wert, Querverweis, Spaltenname
+Merkmale definiert durch Datenbankschema, in das abgespeichert wird. Die Einzelnen Datenbankschemata lassen sich anhand der Felder, die sie definieren, unterscheiden. Somit ist das Vorhandensein eines solchen Feldes. Ein solches Schema definiert Felder, die absolute Werte oder Querverweise enthalten können. 
+
+characteration through template?
+Absoluter Wert = Entity / Pattern recognition
+Querverweis = String matching
+Spaltenname = keyword search
+Klasse > Merkmale
+Merkmalsraum?
+
+
+\section{Klassifikation}
+Merkmale > Classifier
+Verarbeitung: Eingabe > Merkmale > Konfidenzintervall
+art des merkmals 
+Machine Learning
+
+
+\section{Extraktion von Information}
+Merkmale die vorhanden sind können weiter verwendet werden.
+Verstärkte suche
+lernprozess - learning when something was missed if user enters it and it is also found inside the text
+
+\chapter{Konzeption}
+technologische Grundlagen beachten
+alchemy api
+learning classifiers
+regular expressions
+scope der arbeit beachten
+größe des Trainingdatensatzes beachten
+analogie zu theoretischer herangehensweise
+problem des trainingsdatensatz: bereits exportierte, verfremdete daten
 \chapter{Implementierung}
-\section{Module}
-\subsection{Klassifikation der Eingabe}
-\subsection{Extraktion von Information}
-\subsection{Bestätigung der Resultate}
-\section{Validierung}
+\section{Klassifikation der Eingabe}
+\section{Extraktion von Information}
 
 \chapter{Schluss}
-
-
-Ziel dieser Projektarbeit ist die Entwicklung eines Systems, dass es dem Nutzer erlaubt, Information ohne Eingabemaske einzupflegen. Dabei soll die Eingabe automatisch, wenn möglich, einer Klasse in der Problemdomäne CRM zugeordnet werden. Wir betrachten Texte, die nur bedingt prosaisch sind und deshalb nur wenig grammatikalische Strukturen aufweisen. In diesem Fall müssen andere Merkmale zur Verarbeitung der Eingabe berücksichtigt werden.
-Zu Beginn des ersten Teils der Arbeit werden die konkreten funktionalen Anforderungen an das System definiert. Als Nächstes betrachten wir die theoretischen Prozessschritte, die vom Rohtext zum eingeordneten und extrahierten Datensatz führen. Der zweite Teil behandelt die Schwierigkeiten die in Anbetracht der Qualität der Eingabedaten und der technischen Mittel aufkommen sowie diesen entgegengewirkt werden kann. Im Folgenden werden aus den theoretischen Überlegungen abgeleitete systemarchitektonische Strukturen auf die tatsächliche Umsetzung übertragen.
-Zuletzt wird der Erfolg des Systems Anhand der Anforderungen ermittelt und ein Ausblick auf praktische Einsatzmöglichkeiten geboten.
-
-non-tech affinity \cite{hemken}
-human indexing is expensive, cost reduction because expert-labour
 learning by doing encouraged. people get introduced to the problem domain throught the suggestions served by the system.
-Ziel: Klassifikation und Extraktion von Texten
-domäne crm, ausgewählte kategorien
-\chapter{Hauptteil}
-\section{Funktionale Anforderungen}
-\subsection{Interaktionsmodell}
-Aus der Perspektive des Interfacedesigns werden in diesem Abschnitt die Anforderungen an die Interaktion mit dem Systems definiert.
-- ausegehend von liveeinsatz mit echtem nutzer
-- vertrauen ist fragil \cite{hemken} correct citation 
 
-definition setting,user scenario,interaction model
-system erhält feedback von nutzer - trainierbar
-interaktionsmodell bzw. lernprozess - learning when something was missed if user enters it and it is also found inside the text
+
+\chapter{optional}
+überlegungen zur benutzeroberfläche
 teilautomatische "interaktive" klassifikation und extraction, weil: trainingsdaten rar? und vertrauen auf den classifier gering.
 \subsection{Datenverarbeitung}
 automatisierte generierung von metadaten, metadaten werden hier das neue zentrum der interessen
 exogenous information - phone note for example on ingoing phone call
-X verschiedene Datentypen
 echte anforderung: email-footer
-interaktive Klassifikation bzw. Datenverarbeitung
 extensible: insert own types with certain features?
 fokus auf texte die einer klasse entsprechen
 a priori?
@@ -88,47 +97,10 @@ problem of notes - bad spelling
 Im folgenden wird die theoretische Herangehensweise an die Klassifikation der eingegebenen Daten beleuchtet.
 Categorization - using chrome? for email footer for example
 Occam's Razor?
-characterization - finding features of certain category
-characteration through template?
-\subsection{Extraktion von Information}
-
-\section{Implementierung}
-\subsection{Werkzeuge}
-alchemy api
-learning classifiers
-regular expressions
-
-\subsection{Trainingsdatensatz}
-- endogenous knowledge only in paper notes...
-- nonoverlapping categories but multiple categories in one note. -> separation
-problem des trainingsdatensatz: bereits exportierte, verfremdete daten
-\subsection{Implementation des Klassifikationsmechanismus}
-\subsection{Implementation des Extraktionsmechanismus}
-\section{Evaluierung des Systems}
-\subsection{Prüfung der funktionalen Anforderungen}
-\subsection{Präzision}
 
 
 \chapter{Schluss}
-\section{Zusammenfassung}
-\section{Fazit}
-\section{Ausblick}
 
-\chapter{Notizen}
 
 section{To Do}
 Jones fragen
-binäre entscheidung? oder single-label?
-find thesaurus for crm
-binäre entscheidung? oder single-label?
-expert interview - ivan kravchenko?
-recognizing special cases (what did i mean here?????)
-
-Datensätze:
-E-Mail-Footer
-Exporte der CRM-Datensätze
-
-section{Literatur}
-Knowledge‐enabled customer relationship management: integrating customer relationship management and knowledge management concepts
-
-"An Adaptive User Interface Based On Personalized Learning" pdf
