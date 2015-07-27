@@ -1,41 +1,56 @@
 \chapter{Einleitung}
 \section{Problemstellung}
 Eingabeformulare als Barriere
-Konzept extraktion und separate speicherung als Datensatz
-\section{Motivation}
-non-tech affinity \cite{hemken}
-bei großen system fällt Überblick schwer.
+
+% Motivation
 human indexing is expensive, cost reduction because expert-labour \cite{shneiderman}
-\chapter{}
-\section{Funktionale Anforderungen}
+non-tech affinity 
+bei großen system fällt Überblick schwer.
+
+
+
+
+\chapter{Grundlagen}
+automatisierte generierung von metadaten, metadaten werden hier das neue zentrum der interessen
+Simon Mayer becomes Simon Mayer (recognised kind: account)
+Texte fast nie grammatikalisch korrekt
+problem of notes - bad spelling
+\section{Domäne CRM}
+Diese Projektarbeit konzentriert sich auf Texte und Kategorien der Domäne CRM. Das bedeutet nicht, dass das entwickelte System nur in der Lage ist, die funktionalen Anforderungen nur in jener Domäne zu erfüllen. Im Gegenteil: das System sollte so flexibel sein, dass es auch für Informationssysteme genutzt werden kann, deren Entitäten sowohl an sich als auch untereinander ähnlich strukturiert sind.
+\section{Klassifikation}
+D. Michie  D. J. Spiegelhalter  and C. C. Taylor beschreiben Klassifikation im Allgemeinen als Aufgabe, Vorhersagen oder Entscheidungen auf Basis momentan verfügbarer Information zu treffen. In "Machine Learning, Neural and Statistical Classification" beschränken sie diese Aufgabe auf die Einordnung eines Falles, oder im Kontext dieser Projektarbeit auch Entität genannt, in eine von mehreren vorgegeben Kategorien. Wenn in dieser Projektarbeit von Klassifikation die Rede ist, dann ist auch die zuletzt beschriebene Aufgabe gemeint.\cite[michie] Diese Art der Klassifikation, also die Einordnung einer Entität in eine einzelne Kategorie bzw. die zuordnung zu einer spezifischen Klasse wird als Multiclass Classification bezeichnet. In gängiger Literatur ist zudem von zwei weiteren Formen der Klassifikation die Rede: Binäre Klassifikation, bei der eine Entität in eine von genau zwei Kategorien eingeordnet wird und Multilabel Classification, bei der einer Entität keine bis mehrere Klassen bzw. "Labels" zugewiesen werden.
+
+
+Bei der Entwicklung der Vorgehensweise zur Klassifikation der eingegebenen Texte wird davon ausgegangen, dass keine exogene Information zur Verfügung steht. Das heißt, dass der Klassifikationsmechanismus nicht auf Metadaten wie z.B. Autor oder Uhrzeit zugreifen kann. Somit steht nur endogene Information, also der Inhalt der eingegebenen Texte zur Verfügung. Die Prüfung des Vorhandenseins von Merkmalen beschränkt sich also auf Bereich des Textkörpers.\cite[sebastiano]
+
+
+wie haben andere die probleme gelöst
+beschreiben drei verschiedene Ansätze zur Klassifikation 
+Statistische Herangehensweise. Menschlicher eingriff nötig
+Machine Learning
+Neurale Netzwerke
+Erklärung Klassifikation: Zwei typen: supervised vs unsupervised
+a priori?
+Occam's Razor?
+No feature Selection and extraction
+\section{Extraktion}
+
 Es wird davon ausgegangen, dass im System Kategorien bzw. Klassen definiert sind, die jeweils ein bestimmtes Schema bzw. eine Vorlage vorgeben. Diese Vorlage bestimmt die Struktur, also die einzelnen Felder einer Instanz dieser Klasse. Eine Instanz stellt hier einen im System zu speichernden Datensatz dar. Als Extraktion wird der Vorgang bezeichnet, bei dem einzelne Entitäten, also die Werte eines Formulars, aus der Eingabe gewonnen werden.
+
+
+\chapter{Funktionale Anforderungen}
 \begin{enumerate}
 \item Das System soll die Eingabe in Textform entgegen nehmen.
 \item Das System soll jeweils eine Eingabe in eine Vorgegebene Kategorie einordnen.
 \item Danach soll das System die durch die Kategorie bestimmte Vorlage mit aus der Eingabe extrahierten Informationen befüllen.
 \end{enumerate}
-
-
-\chapter{Grundlagen}
-Modelle
-Klassen aus CRM Bereich, problemwiederholung: einordnung. Das heißt:
-domäne crm, ausgewählte kategorien
-Technologien
-Javascript
-
-Klassifikation
-wie haben andere die probleme gelöst
-Erklärung Klassifikation: Zwei typen: supervised vs unsupervised
-
-Extraktion
-
 \chapter{Theoretische Herangehensweise}
 Nach der Definition der funktionalen Anforderungen an das System wird nun die theoretische Herangehensweise beschrieben. Dabei wird die Funktion des Systems in nacheinander geschaltete Mechanismen geteilt.
-\section{Routing}
+
+\section{Klassifikation}
 Klassen sind vorgegeben, multiclass classification weil CITE WIKIPEDIA
 Ziel: Datensatz
-\section{Merkmale}
-Bei der Entwicklung der Vorgehensweise zur Klassifikation der eingegebenen Texte wird davon ausgegangen, dass keine exogene Information zur Verfügung steht. Das heißt, dass der Klassifikationsmechanismus nicht auf Metadaten wie z.B. Autor oder Uhrzeit zugreifen kann. Somit steht nur endogene Information, also der Inhalt der eingegebenen Texte zur Verfügung. Die Prüfung des Vorhandenseins von Merkmalen beschränkt sich also auf Bereich des Textkörpers.\cite[sebastiano]
+% Merkmale
 
 characterization - finding features of certain category
 Tabellenspalte > Absoluter Wert, Querverweis, Spaltenname
@@ -49,19 +64,23 @@ Klasse > Merkmale
 Merkmalsraum?
 
 
-\section{Klassifikation}
 Merkmale > Classifier
 Verarbeitung: Eingabe > Merkmale > Konfidenzintervall
 art des merkmals 
 Machine Learning
 
-
 \section{Extraktion von Information}
 Merkmale die vorhanden sind können weiter verwendet werden.
 Verstärkte suche
+using chrome? for email footer for example
 lernprozess - learning when something was missed if user enters it and it is also found inside the text
 
+
+
+
+
 \chapter{Konzeption}
+Konzept extraktion und separate speicherung als Datensatz
 technologische Grundlagen beachten
 alchemy api
 learning classifiers
@@ -79,28 +98,14 @@ learning by doing encouraged. people get introduced to the problem domain throug
 
 
 \chapter{optional}
-überlegungen zur benutzeroberfläche
+% UI
 teilautomatische "interaktive" klassifikation und extraction, weil: trainingsdaten rar? und vertrauen auf den classifier gering.
-\subsection{Datenverarbeitung}
-automatisierte generierung von metadaten, metadaten werden hier das neue zentrum der interessen
-exogenous information - phone note for example on ingoing phone call
 echte anforderung: email-footer
-extensible: insert own types with certain features?
-fokus auf texte die einer klasse entsprechen
-a priori?
-Simon Mayer becomes Simon Mayer (recognised kind: account)
-\section{Theoretische Herangehensweise}
-Texte fast nie grammatikalisch korrekt
-endogene Information
-problem of notes - bad spelling
-\subsection{Klassifikation der Eingabe}
-Im folgenden wird die theoretische Herangehensweise an die Klassifikation der eingegebenen Daten beleuchtet.
-Categorization - using chrome? for email footer for example
-Occam's Razor?
 
 
-\chapter{Schluss}
 
 
 section{To Do}
 Jones fragen
+transfer literature to bibfile
+check formal requirements
