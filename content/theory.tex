@@ -1,0 +1,70 @@
+\chapter{Theoretische Herangehensweise}
+Nach der Definition der funktionalen Anforderungen an das System wird nun die theoretische Herangehensweise beschrieben. Dabei wird die Funktion des Systems analog zu den funktionalen Anforderungen in nacheinander geschaltete Mechanismen geteilt.
+
+\section{Klassifikation}
+Durch das Ziel, mit der Eingabe einen einem bestimmten Schema entsprechenden Datensatz aufzubauen sind die verschiedenen Klassen bereits vorgegeben. 
+
+Klassen sind vorgegeben, multiclass classification weil CITE WIKIPEDIA
+Ziel: Datensatz
+Klassen nichts
+% Merkmale
+Bei der Entwicklung der Vorgehensweise zur Klassifikation der eingegebenen Texte wird davon ausgegangen, dass keine exogene Information zur Verfügung steht. Das heißt, dass der Klassifikationsmechanismus nicht auf Metadaten wie z.B. Autor oder Uhrzeit zugreifen kann. Somit steht nur endogene Information, also der Inhalt der eingegebenen Texte zur Verfügung. Die Prüfung des Vorhandenseins von Merkmalen beschränkt sich also auf Bereich des Textkörpers. \cite{sebastiano}
+
+Beziehung Schema, Merkmale, Klasse
+Zur Unterscheidung müssen jeweils die Merkmale der einzelnen Klassen ausgemacht werden. Dieser Vorgang wird in dieser Projektarbeit als Charakterisierung bezeichnet. Zur Charakterisierung wird hier das Schema herangezogen, in dem ein Datensatz der jeweiligen Kategorie gespeichert werden soll. Die Schemata der einzelnen Kategorien definieren jeweils unterschiedliche Felder. 
+Jedes Feld hat einen bestimmten Typ bzw. eigene Merkmale.
+Die Verteilung von Feldern verschiedener Typen auf die einzelnen Schemata ergeben im Idealfall ein Muster, das nur bei einem einzigen Schema zu beobachten ist.
+Tabelle X zeigt, welche Felder die einzelnen Schemata definieren.
+
+\begin{tabular}{lll}
+    Klasse & Aufgabe & Servicefall \\
+    Schließen \\
+    Status \\
+    Betreff \\
+    Kontakt \\
+    Telefon \\
+    Fällig am \\
+    Mitarbeiter \\
+\end{tabular}
+
+nur boolsche Merkmale
+problem of notes - bad spelling
+Falschpositiv/Falschnegativ
+Dieses Muster wird nun zur Charakterisierung der einzelnen Klassen genutzt. Somit ist die Merkmalsverteilung der Klassen analog zur Verteilung der Felder auf den Schemata der einzelnen Kategorien. 
+Bei der Betrachtung der Schemata fällt auf, dass die einzelnen Felder immer entweder vorhanden oder nicht vorhanden sind. Da sich die Merkmale analog zu den Feldern der Schemata verhalten, sind erstere als boolsche Merkmale zu bezeichnen. Das heißt, dass sie die Werte 'vorhanden' und 'nicht vorhanden' bzw. 1 oder 0 annehmen können. Nach der Charakterisierung der Klassen werden nun die Möglichkeiten betrachtet, das Vorhandensein von Information, die den einzelnen Feldern entsprechen, und somit die Ausprägung der Merkmale als 'vorhanden ', festzustellen. 
+SATZ UMSCHREIBEN
+zitat boolsche merkmale
+
+Tabellenspalte > Absoluter Wert, Querverweis, Spaltenname
+Bei der Analyse der verschiedenen Schemata fallen auch grundsätzlich verschiedene Informationstypen auf, die die einzelnen Felder erwarten. Die verschiedenen Informationstypen einschließlich der Felder, von denen sie erwartet werden, sind in Tabelle X beschrieben.
+
+\begin{tabular}{lll}
+    Informationstyp                 & Felder \\
+    Fließtexte                      & Betreff, Beschreibung \\
+    Boolsche Werte                  & Status (geschlossen/offen) \\
+    Standardformatierte Information & Datum, Telefonnummer \\
+    Querverweis                     & Mitarbeiter, Kunde, Kontakt, \\
+\end{tabular}
+
+Bei der Klassifikation der Eingabe wird zunächst das Vorhandensein von Informationen
+
+Unabhängig davon wird auch die Möglichkeit in Betracht gezogen, dass der Nutzer selbst bereits die Kategorie des vorgenommenen Eintrags innerhalb jenem vermerkt.
+
+
+
+/* Absoluter Wert = Entity / Pattern recognition */
+/* Querverweis = String matching */
+/* Spaltenname = keyword search */
+/* Klasse > Merkmale */
+/* Merkmalsraum? */
+
+/* Merkmale > Classifier */
+/* Verarbeitung: Eingabe > Merkmale > Konfidenzintervall */
+/* art des merkmals */ 
+/* Machine Learning */
+
+\section{Extraktion von Information}
+Merkmale die vorhanden sind können weiter verwendet werden.
+Verstärkte suche
+using chrome? for email footer for example
+lernprozess - learning when something was missed if user enters it and it is also found inside the text

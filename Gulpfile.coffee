@@ -2,14 +2,19 @@ gulp  = require 'gulp'
 shell = require 'gulp-shell'
 del   = require 'del'
 
+tasks = ['prepareAux','prepareBibtex', 'renderDoc','clean']
 gulp.task 'default', ->
-    gulp.start ['prepareBibtex', 'renderDoc','clean']
-    gulp.watch '*.tex', ['prepareBibtex', 'renderDoc','clean']
+    gulp.start tasks
+    gulp.watch '**/*.tex', tasks
 
-gulp.task 'prepareBibtex', ->
+gulp.task 'prepareBibtex', ['prepareAux'], ->
     gulp.src('')
         .pipe shell 'bibtex projektarbeit.aux'
 
+gulp.task 'prepareAux', ->
+    gulp.src('')
+        .pipe shell 'arara projektarbeit.tex'
+        .on 'error' , -> gulp.start 'renderDocVerbosely'
 gulp.task 'renderDoc', ['prepareBibtex'], ->
     gulp.src('')
         .pipe shell 'arara projektarbeit.tex'
@@ -27,5 +32,6 @@ gulp.task 'clean', ['renderDoc'], ->
          '*.toc',
          '*.bbl',
          "*.aux",
+         "content/*.aux",
          '*.bib'
     ]

@@ -63,3 +63,31 @@ für Klassifikation
 interaktive Klassifikation.
 system passiv
 Ziel dieser Projektarbeit ist die Entwicklung eines Systems, dass es dem Nutzer erlaubt, Information ohne Eingabemaske einzupflegen. Dabei soll die Eingabe automatisch, wenn möglich, einer Klasse in der Problemdomäne CRM zugeordnet werden. Wir betrachten Texte, die nur bedingt prosaisch sind und deshalb nur wenig grammatikalische Strukturen aufweisen. In diesem Fall müssen andere Merkmale zur Verarbeitung der Eingabe berücksichtigt werden.
+
+\chapter{optional}
+% UI
+teilautomatische "interaktive" klassifikation und extraction, weil: trainingsdaten rar? und vertrauen auf den classifier gering.
+echte anforderung: email-footer
+
+
+
+
+section{To Do}
+Jones fragen
+transfer literature to bibfile
+check formal requirements
+
+
+automatisierte generierung von metadaten, metadaten werden hier das neue zentrum der interessen
+Simon Mayer becomes Simon Mayer (recognised kind: account)
+Texte fast nie grammatikalisch korrekt
+Fokus:
+no
+No feature Selection and extraction
+Population
+Merkmalsträger
+Merkmal
+Merkmalsausprägung
+
+a priori?
+Occam's Razor?

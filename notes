@@ -1,0 +1,34 @@
+Account
+E-Mail
+Call
+
+
+Field types
+
+Preset fields:
+    Relational:
+        Account
+        Employee
+        challenge:
+            not-yet created relationships
+
+    Static
+        State(Task)
+            started, completed, planned
+preformatted fields
+    phone number
+    email-adress
+    date
+    challenges:
+        different formats
+
+free fields
+    description
+    title
+    name
+
+general challenges: solution
+spelling errors: fuzzy search
+
+general procedures
+keyword: column name search
