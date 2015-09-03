@@ -3,13 +3,13 @@ Nach der Definition der Anforderungen werden nun die theoretischen Grundlagen vo
 
 
 \section{Domäne CRM}
-\gls{crm} ist eine Strategie zur Pflege der Beziehung eines Unternehmens mit dessen Kunden. Sie integriert Personal, Prozesse und Technologien zur Pflege, Erhaltung und von Kundenbeziehungen. Ziel ist die Maximierung der Einnahmen durch Steigerung der Kundenzufriedenheit. Dabei wird der Kunde konzeptionell in den Mittelpunkt aller Geschäftsprozesse gestell. \gls{crm} kann von Unternehmen der Bereiche \gls{b2c} und \gls{b2b} eingesetzt werden.\cite{chen2003understanding} Aus dem Konzept, den Kunden als Dreh- und Angelpunkt der Geschäftsprozesse zu betrachten, lässt sich ein konkretes Modell für die Strukturierung der erfassten Daten ableiten. Jenes Modell, das als Grundlage für diese Projektarbeit dient, definiert, dass jeder Datensatz, der selbst keinen Kunden repräsentiert, dem Datensatz eines Kunden zugewiesen ist. \cite{puckey2001modeling} Wir konzentrieren uns in dieser Projektarbeit auf den \gls{b2b} Bereich, um die Erfassung der Daten zu vereinfachen.
+\gls{crm} ist eine Strategie zur Pflege der Beziehung eines Unternehmens mit dessen Kunden. Sie integriert Personal, Prozesse und Technologien zur Pflege, Erhaltung und von Kundenbeziehungen. Ziel ist die Maximierung der Einnahmen durch Steigerung der Kundenzufriedenheit. Dabei wird der Kunde konzeptionell in den Mittelpunkt aller Geschäftsprozesse gestell. \gls{crm} kann von Unternehmen der Bereiche \gls{b2c} und \gls{b2b} eingesetzt werden.\footnote{\cite{chen2003understanding}} Aus dem Konzept, den Kunden als Dreh- und Angelpunkt der Geschäftsprozesse zu betrachten, lässt sich ein konkretes Modell für die Strukturierung der erfassten Daten ableiten. Jenes Modell, das als Grundlage für diese Projektarbeit dient, definiert, dass jeder Datensatz, der selbst keinen Kunden repräsentiert, dem Datensatz eines Kunden zugewiesen ist. \footnote{\cite{puckey2001modeling}} Wir konzentrieren uns in dieser Projektarbeit auf den \gls{b2b} Bereich, um die Erfassung der Daten zu vereinfachen.
 relation?
 
-\section{\Acrfull{ae}}
-\gls{ae} bezeichnet die Aufgabe, z.B. Informationseinheiten wie Namen, Organisation und Ortsbezeichnungen oder numerische Ausdrücke wie Zeiten, Datumsangabgen oder Prozentangaben aus Texten zu extrahieren und also solche zu kennzeichnen. \gls{ae} ist primär eine Unteraufgabe der Informationsextraktion\cite{manning2012information}. Um diese benannten Entitäten zu erhalten sind zwei Schritte erforderlich: Zunächst wird der Text vorverarbeitet. Das Ergebnis dieses Schrittes ist im besten Fall ein Sammlung aller nicht mehr sinnvoll zu Teilenden Textbestandteile. Diese Bestandteile, auch Tokens genannt, sind häufig einzelne Worte, also durch Leer- oder Satzzeichen getrennte Zeichenketten, beschränken sich allerdings nicht darauf. Der Name einer Person z.B. kann in einem aber auch mehreren Worten bestehen. Im folgenden werden die Merkmale der einzelnen Tokens bestimmt.\footnote{\cite{nadeau2007survey}}
+\section{\Acrlong{ae}}
+\gls{ae} bezeichnet die Aufgabe, z.B. Informationseinheiten wie Namen, Organisation und Ortsbezeichnungen oder numerische Ausdrücke wie Zeiten, Datumsangabgen oder Prozentangaben aus Texten zu extrahieren und also solche zu kennzeichnen. Um diese benannten Entitäten zu erhalten sind zwei Schritte erforderlich: Zunächst wird der Text vorverarbeitet. Das Ergebnis dieses Schrittes ist im besten Fall ein Sammlung aller nicht mehr sinnvoll zu Teilenden Textbestandteile. Diese Bestandteile, auch Tokens genannt, sind häufig einzelne Worte, also durch Leer- oder Satzzeichen getrennte Zeichenketten, beschränken sich allerdings nicht darauf. Der Name einer Person z.B. kann in einem aber auch mehreren Worten bestehen. Im folgenden werden die Merkmale der einzelnen Tokens bestimmt.\footnote{\cite{nadeau2007survey}} \gls{ae} ist auch eine Unteraufgabe der Informationsextraktion\footnote{\cite{manning2012information}}, das Feld, das im folgenden betrachtet wird.
 
-\section{Extraktion von Information}
+\section{\acrlong{ie}}
 Informationsextraktion befasst sich mit dem Problem, relevante Information aus Texten zu extrahieren. Dabei wird die Struktur, meist das Schema für einen Datensatz bzw. Datenbankeintrag vorgegeben, die die extrahierten Daten annehmen sollen. Diese Struktur zeichnet sich als eine Zusammenstellung von typisierten Feldern aus. Im folgenden sind die Schritte aufgeführt, die durchgeführt werden, um diese Felder mit Information zu befüllen.
 \begin{enumerate}
 	\item Segmentierung
@@ -17,7 +17,7 @@ Informationsextraktion befasst sich mit dem Problem, relevante Information aus T
 	\item Association
 	\item Deduplication
 \end{enumerate}
-\cite{mccallum2005information}
+\footnote{\cite{mccallum2005information}}
 Segmentation 
 Dayne Freitag description
 differenzierung von einzelnen slots
@@ -25,16 +25,16 @@ Es wird davon ausgegangen, dass im System Kategorien bzw. Klassen definiert sind
 
 
 \section{Klassifikation}
-D. Michie  D. J. Spiegelhalter  and C. C. Taylor beschreiben Klassifikation im Allgemeinen als Aufgabe, Vorhersagen oder Entscheidungen auf Basis momentan verfügbarer Information zu treffen. In "Machine Learning, Neural and Statistical Classification" beschränken sie diese Aufgabe auf die Einordnung eines Falles, oder im Kontext dieser Projektarbeit auch Objekt genannt, in eine von mehreren vorgegeben Kategorien. Wenn in dieser Projektarbeit von Klassifikation die Rede ist, dann ist auch die zuletzt beschriebene Aufgabe gemeint. Diese Art der Klassifikation, also die Einordnung einer Objekt in eine einzelne Kategorie bzw. die Zuordnung zu einer spezifischen Klasse wird als Multiclass Classification bezeichnet. In gängiger Literatur ist zudem von zwei weiteren Formen der Klassifikation die Rede: Binäre Klassifikation, bei der eine Objekt in eine von genau zwei Kategorien eingeordnet wird und Multilabel Classification, bei der einer Objekt keine bis mehrere Klassen bzw. "Labels" zugewiesen werden.\cite{michie1994machine}
+D. Michie  D. J. Spiegelhalter  and C. C. Taylor beschreiben Klassifikation im Allgemeinen als Aufgabe, Vorhersagen oder Entscheidungen auf Basis momentan verfügbarer Information zu treffen. In "Machine Learning, Neural and Statistical Classification" beschränken sie diese Aufgabe auf die Einordnung eines Falles, oder im Kontext dieser Projektarbeit auch Objekt genannt, in eine von mehreren vorgegeben Kategorien. Wenn in dieser Projektarbeit von Klassifikation die Rede ist, dann ist auch die zuletzt beschriebene Aufgabe gemeint. Diese Art der Klassifikation, also die Einordnung einer Objekt in eine einzelne Kategorie bzw. die Zuordnung zu einer spezifischen Klasse wird als Multiclass Classification bezeichnet. In gängiger Literatur ist zudem von zwei weiteren Formen der Klassifikation die Rede: Binäre Klassifikation, bei der eine Objekt in eine von genau zwei Kategorien eingeordnet wird und Multilabel Classification, bei der einer Objekt keine bis mehrere Klassen bzw. "Labels" zugewiesen werden.\footnote{\cite{michie1994machine}}
 In der zuletzt erwähnten Publikation werden drei verschiedene Methoden zur Klassifikation beschrieben.
-Um Entitäten in einzelne Klassen einzuordnen, müssen letztere als ein Satz von Merkmalen definiert werden. Merkmale sind Schlagwörter oder charakteristische Eigenschaften, die dazu konstruiert sind, algorhithmisch weiterverarbeitet zu werden. \cite{nadeau2007survey} Die Ausprägung dieser Merkmale bei den einzelnen Entitäten wird dann genutzt, um möglichst genau die Zugehörigkeit einer Entität zu einer Klasse zu bestimmen.
+Um Entitäten in einzelne Klassen einzuordnen, müssen letztere als ein Satz von Merkmalen definiert werden. Merkmale sind Schlagwörter oder charakteristische Eigenschaften, die dazu konstruiert sind, algorhithmisch weiterverarbeitet zu werden. \footnote{\cite{nadeau2007survey}} Die Ausprägung dieser Merkmale bei den einzelnen Entitäten wird dann genutzt, um möglichst genau die Zugehörigkeit einer Entität zu einer Klasse zu bestimmen.
 
 \section{Maschinelles Lernen}
 Die bis hier beschriebenen Formen des maschinellen Lernens sind als überwachtes Lernen zu bezeichnen. Das heißt, dass die Klassen, in die die Objekte eingeordnet werden sollen, bereits vorgegeben sind. Beim unüberwachten Lernen hingegen wird die Verteilung der einzelnen Objekte im Merkmalsraum betrachtet. Anhand dieser Verteilung werden die Objekte dann entsprechend ihrer Gemeinsamkeiten und Unterschiede in Gruppen eingeteilt. Die Einteilung in Gruppen ohne vorgegebene Klassen wird als Clustering bezeichnet.
 Machine Learning
 Neurale Netzwerke
 
-\cite{nadeau2007survey}
+\footnote{\cite{nadeau2007survey}}
 Um zu dem Resultat: 2 Schritte Vorverarbeitung, also Extraktion von Entitäten und 
 Bias: input collection
 Noise
