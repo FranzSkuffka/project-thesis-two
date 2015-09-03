@@ -1,6 +1,6 @@
 % arara: xelatex
 %: {options: -output-directory=./output}
-\input{preamble}
+	\input{preamble}
 
 \begin{document}
 	% Title page
@@ -56,6 +56,7 @@
 
 	
 	\include{content/Introduction}
+	\include{content/requirements}
 	\include{content/fundament}
 	\include{content/theory}
 	\include{content/main}
@@ -81,10 +82,8 @@
 	% \include{content/Beigaben}
 	
 	% % Glossar, falls benötigt
-	% \input{content/Glossar}
-	% \makeglossaries
-	% \printglossary
-	
+	\input{content/Glossar}
+	\printglossary
 	% Literaturverzeichnis
 	\printbibliography
 	

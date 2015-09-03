@@ -9,3 +9,14 @@ output
 *.xml
 *.toc
 node_modules
+.*.sw*
+.sw*
+.DS_Store
+projektarbeit.acn
+projektarbeit.acr
+projektarbeit.alg
+projektarbeit.glg
+projektarbeit.glo
+projektarbeit.gls
+projektarbeit.glsdefs
+projektarbeit.ist

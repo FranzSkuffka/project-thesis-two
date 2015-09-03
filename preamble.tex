@@ -59,7 +59,6 @@ BoldItalicFont=Arial Bold Italic.ttf
 % Abkürzungsverzeichnis
 \usepackage[printonlyused, withpage]{acronym}
 % Abstand mit Punkten füllen
-\renewcommand*\bflabel[1]{\textbf{\normalsize{#1}}\hfill}
 
 % Tiefe des Inhaltsverzeichnisses
 \setcounter{tocdepth}{2}
@@ -113,7 +112,8 @@ BoldItalicFont=Arial Bold Italic.ttf
 \usepackage{url}
 
 % Glossar
-\usepackage[toc,nonumberlist]{glossaries}
+\usepackage[acronym,toc,nonumberlist]{glossaries}
+\makeglossaries
 
 % Titel als Referenzierung verwenden
 \usepackage{titleref}
@@ -161,3 +161,10 @@ BoldItalicFont=Arial Bold Italic.ttf
 % Abkürzungen
 \newcommand{\dash}{d.\,h.}
 \newcommand{\zB}{z.\,B.}
+
+% Zitate in neue Zeile rücken
+\usepackage{breakcites}
+
+% Glossary capitalization
+\usepackage{mfirstuc}
+% \renewcommand{\glsnamefont}[2][]{\capitalisewords{#1}\xspace#2}

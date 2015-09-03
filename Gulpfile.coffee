@@ -2,29 +2,29 @@ gulp  = require 'gulp'
 shell = require 'gulp-shell'
 del   = require 'del'
 
-tasks = ['prepareAux','prepareBibtex', 'renderDoc','clean']
+tasks = ['preRender','prepareMeta','render','clean']
 gulp.task 'default', ->
-    gulp.start tasks
+    gulp.start ['preRender']
     gulp.watch '**/*.tex', tasks
 
-gulp.task 'prepareBibtex', ['prepareAux'], ->
+gulp.task 'prepareMeta', ['preRender'], ->
     gulp.src('')
         .pipe shell 'bibtex projektarbeit.aux'
+        .pipe shell 'makeglossaries projektarbeit'
+        .on 'error' , -> gulp.start 'render'
 
-gulp.task 'prepareAux', ->
-    gulp.src('')
-        .pipe shell 'arara projektarbeit.tex'
-        .on 'error' , -> gulp.start 'renderDocVerbosely'
-gulp.task 'renderDoc', ['prepareBibtex'], ->
-    gulp.src('')
-        .pipe shell 'arara projektarbeit.tex'
-        .on 'error' , -> gulp.start 'renderDocVerbosely'
 
-gulp.task 'renderDocVerbosely', ->
-    gulp.src ''
-        .pipe shell 'arara projektarbeit.tex -v'
+gulp.task 'preRender', ->
+    gulp.src('')
+        .pipe shell 'xelatex projektarbeit.tex'
+        .on 'error' , -> gulp.start 'prepareMeta'
+
+gulp.task 'render', ['prepareMeta'], ->
+    gulp.src('')
+        .pipe shell 'echo | xelatex projektarbeit.tex'
         .on 'error' , -> gulp.start 'clean'
-gulp.task 'clean', ['renderDoc'], ->
+
+gulp.task 'clean', ['render'], ->
     del [
          '*.blg',
          '*.out',

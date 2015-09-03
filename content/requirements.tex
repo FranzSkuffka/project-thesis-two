@@ -1,0 +1,17 @@
+\chapter{Funktionale Anforderungen}
+Als kritischer Faktor der Kostenoptimierung im Betrieb von \gls{crm} Software ist die Effizienz ihrer Nutzer. Dies ist begründet durch die Lernkurve bzw. den Schulungsbedarf den die effektive Nutzung von \gls{crm} Software voraussetzt. Durch Lohnunterschiede  begründet ist mit dem Einsatz von im System geschulten Mitarbeitern ein im Vergleich zu ungeschulten Mitarbeitern  größerer finanzieller Aufwand in derselben Zeit verbunden. Die automatisierung von Arbeitsschritten mit möglichst geringer Fehlerwahrscheinlichkeit ist eine Möglichkeit, diese geschulten Mitarbeiter effizienter arbeiten zu lassen. Bei der Erfassung neuer Datensätze können dem Nutzer mehrere Schritte abgenommen werden.  Hieraus ergeben sich funktionale Anforderungen an das System in Form von linear aufeinander folgenden Teilschritten.
+\begin{enumerate}
+    \item Das System soll die Eingabe in Textform entgegen nehmen.
+    \item Das System soll Konfidenzintervalle für die Zugehörigkeit der Eingabe zu den einzelnen Kategorien ausgeben.
+    \item Das System soll die Eingabe der Wahl der zutreffenden Kategorie durch den Nutzer entgegen nehmen.
+    \item Das System soll die durch die Kategorie bestimmte Vorlage mit aus der Eingabe extrahierten Informationen befüllen.
+\end{enumerate}
+
+Weitere Anforderungen ergeben sich aus dem Ziel, das System eine tatsächlich \gls{crm} Software integrieren zu können. Auch ist der Einsatz zunächst auf den deutschsprachigen Raum und die Domäne CRM fokussiert. 
+Da das System in tatsächliche \gls{crm} Software integriert können soll, werden seitens der Softwareentwickler weitere Anforderungen definiert.
+\begin{itemize}
+    \item Das System soll Texte in deutsch verarbeiten können.
+    \item Das System soll in der Programmiersprache \gls{js} entwickelt werden.
+    \item Das System soll Schnittstellen für jeden Prozesschritt bieten
+\end{itemize}
+Nach der Definition der funktionalen Anforderungen werden nun die Grundlagen beschrieben, auf denen das System aufgebaut wird.
