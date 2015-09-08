@@ -8,6 +8,7 @@ output
 *.pdf
 *.xml
 *.toc
+*.lot
 node_modules
 .*.sw*
 .sw*

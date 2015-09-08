@@ -1,53 +1,84 @@
-\chapter{Grundlagen}
-Nach der Definition der Anforderungen werden nun die theoretischen Grundlagen vorgestellt, auf die bei der Entwicklung des Systems genutzt werden. Danach werden die wissenschaftlichen Felder beschrieben, die sich mit den Problemen befassen, die auf dem Weg von der Eingabe eines Textes zur Ausgabe eines Datensatzes liegen. Hierbei gehen wir jedoch in umgekenrter Reihenfolge vor. Das heißt, dass wir zunächst das Feld der \gls{ie} betrachten werden. Diese Grundlage wird später genutzt, um die Vorlage, die ein einzelner Datentyp bereitstellt, zu befüllen. \gls{ie} baut auf das Feld der \gls{ae} auf, die sich mit der Erkennung von Worten innerhalb von Texten befasst. \gls{ae} nutzt wiederum auf das Feld der Klassifikation. Das ziel der Klassifikation ist im Kontext dieser Projektarbeit auch für die Feststellung des Korrekten Datentyps und folglich der Auswahl der Vorlage zuständig. Dabei nutzt die Klassifikation so wie \gls{ie} die möglichkeiten der \gls{ae} um Merkmale eines einzelnen Textes zu erkennen. Wir beschreiben jedoch zunächst die Charakteristika der Problemdomäne \gls{crm} und wie sie sich nutzen lassen.
+\chapter{Grundlagen} % revision needed
+Nach der Definition der Anforderungen werden nun die theoretischen Grundlagen vorgestellt, auf die bei der Entwicklung des Systems genutzt werden. Es werden die wissenschaftlichen Felder beschrieben, die sich mit den Problemen befassen, die auf dem Weg von der Eingabe eines Textes zur Ausgabe eines Datensatzes liegen. Hierbei gehen wir jedoch in umgekenrter Reihenfolge vor. Das heißt, dass wir zunächst das Feld der \gls{ie} betrachten werden. Diese Grundlage wird später genutzt, um die Vorlage, die ein einzelner Datentyp bereitstellt, zu befüllen. \gls{ie} baut auf das Feld der \gls{ae} auf, die sich mit der Erkennung von Worten innerhalb von Texten befasst. \gls{ae} nutzt wiederum auf das Feld der Klassifikation. Das ziel der Klassifikation ist im Kontext dieser Projektarbeit auch für die Feststellung des Korrekten Datentyps und folglich der Auswahl der Vorlage zuständig. Dabei nutzt die Klassifikation so wie \gls{ie} die möglichkeiten der \gls{ae} um Merkmale eines einzelnen Textes zu erkennen. Wir beschreiben jedoch zunächst die Charakteristika der Problemdomäne \gls{crm} und wie sie sich nutzen lassen.
 
 
 \section{Domäne CRM}
-\gls{crm} ist eine Strategie zur Pflege der Beziehung eines Unternehmens mit dessen Kunden. Sie integriert Personal, Prozesse und Technologien zur Pflege, Erhaltung und von Kundenbeziehungen. Ziel ist die Maximierung der Einnahmen durch Steigerung der Kundenzufriedenheit. Dabei wird der Kunde konzeptionell in den Mittelpunkt aller Geschäftsprozesse gestell. \gls{crm} kann von Unternehmen der Bereiche \gls{b2c} und \gls{b2b} eingesetzt werden.\footnote{\cite{chen2003understanding}} Aus dem Konzept, den Kunden als Dreh- und Angelpunkt der Geschäftsprozesse zu betrachten, lässt sich ein konkretes Modell für die Strukturierung der erfassten Daten ableiten. Jenes Modell, das als Grundlage für diese Projektarbeit dient, definiert, dass jeder Datensatz, der selbst keinen Kunden repräsentiert, dem Datensatz eines Kunden zugewiesen ist. \footnote{\cite{puckey2001modeling}} Wir konzentrieren uns in dieser Projektarbeit auf den \gls{b2b} Bereich, um die Erfassung der Daten zu vereinfachen.
+\gls{crm} ist eine Strategie zur Pflege der Beziehung eines Unternehmens mit dessen Kunden. Sie integriert Personal, Prozesse und Technologien zur Pflege, Erhaltung und von Kundenbeziehungen. Ziel ist die Maximierung der Einnahmen durch Steigerung der Kundenzufriedenheit. Dabei wird der Kunde konzeptionell in den Mittelpunkt aller Geschäftsprozesse gestell. \gls{crm} kann von Unternehmen der Bereiche \gls{b2c} und \gls{b2b} eingesetzt werden.\footnote{Vgl. \cite{chen2003understanding}} Aus dem Konzept, den Kunden als Dreh- und Angelpunkt der Geschäftsprozesse zu betrachten, lässt sich ein konkretes Modell für die Strukturierung der erfassten Daten ableiten. Jenes Modell, das als Grundlage für diese Projektarbeit dient, definiert, dass jeder Datensatz, der selbst keinen Kunden repräsentiert, dem Datensatz eines Kunden zugewiesen ist. \footnote{Vgl. \cite{puckey2001modeling}} Wir konzentrieren uns in dieser Projektarbeit auf den \gls{b2b} Bereich, um die Erfassung der Daten zu vereinfachen.
 relation?
 
-\section{\Acrlong{ae}}
-\gls{ae} bezeichnet die Aufgabe, z.B. Informationseinheiten wie Namen, Organisation und Ortsbezeichnungen oder numerische Ausdrücke wie Zeiten, Datumsangabgen oder Prozentangaben aus Texten zu extrahieren und also solche zu kennzeichnen. Um diese benannten Entitäten zu erhalten sind zwei Schritte erforderlich: Zunächst wird der Text vorverarbeitet. Das Ergebnis dieses Schrittes ist im besten Fall ein Sammlung aller nicht mehr sinnvoll zu Teilenden Textbestandteile. Diese Bestandteile, auch Tokens genannt, sind häufig einzelne Worte, also durch Leer- oder Satzzeichen getrennte Zeichenketten, beschränken sich allerdings nicht darauf. Der Name einer Person z.B. kann in einem aber auch mehreren Worten bestehen. Im folgenden werden die Merkmale der einzelnen Tokens bestimmt.\footnote{\cite{nadeau2007survey}} \gls{ae} ist auch eine Unteraufgabe der Informationsextraktion\footnote{\cite{manning2012information}}, das Feld, das im folgenden betrachtet wird.
+\section{Klassifikation}
+D. Michie  D. J. Spiegelhalter  and C. C. Taylor beschreiben Klassifikation im Allgemeinen als Aufgabe, Vorhersagen oder Entscheidungen auf Basis momentan verfügbarer Information zu treffen. In "Machine Learning, Neural and Statistical Classification" beschränken sie diese Aufgabe auf die Einordnung eines Falles, oder im Kontext dieser Projektarbeit auch Objekt genannt, in eine von mehreren vorgegeben Kategorien. Wenn in dieser Projektarbeit von Klassifikation die Rede ist, dann ist auch die zuletzt beschriebene Aufgabe gemeint. Diese Art der Klassifikation, also die Einordnung einer Objekt in eine einzelne Kategorie bzw. die Zuordnung zu einer spezifischen Klasse wird als Multiclass Classification bezeichnet. In gängiger Literatur ist zudem von zwei weiteren Formen der Klassifikation die Rede: Binäre Klassifikation, bei der eine Objekt in eine von genau zwei Kategorien eingeordnet wird und Multilabel Classification, bei der einer Objekt keine bis mehrere Klassen bzw. "Labels" zugewiesen werden.\footnote{Vgl. \cite{michie1994machine}}
+In der zuletzt erwähnten Publikation werden drei verschiedene Methoden zur Klassifikation beschrieben.
+Um Entitäten in einzelne Klassen einzuordnen, müssen letztere als ein Satz von Merkmalen definiert werden. Dieser Vorgang wird auch als Charakterisierung bezeichnet. Merkmale sind Schlagwörter oder charakteristische Eigenschaften, die dazu konstruiert sind, algorhithmisch weiterverarbeitet zu werden. \footnote{Vgl. \cite{nadeau2007survey}} Die Ausprägung dieser Merkmale bei den einzelnen Entitäten wird dann genutzt, um möglichst genau die Zugehörigkeit einer Entität zu einer Klasse zu bestimmen. //ref text classification symbolic approuch
 
-\section{\acrlong{ie}}
-Informationsextraktion befasst sich mit dem Problem, relevante Information aus Texten zu extrahieren. Dabei wird die Struktur, meist das Schema für einen Datensatz bzw. Datenbankeintrag vorgegeben, die die extrahierten Daten annehmen sollen. Diese Struktur zeichnet sich als eine Zusammenstellung von typisierten Feldern aus. Im folgenden sind die Schritte aufgeführt, die durchgeführt werden, um diese Felder mit Information zu befüllen.
+Bei der Entwicklung der Vorgehensweise zur Klassifikation der eingegebenen Texte wird davon ausgegangen, dass keine exogene Information zur Verfügung steht. Das heißt, dass der Klassifikationsmechanismus nicht auf Metadaten wie z.B. Autor oder Uhrzeit zugreifen kann. Somit steht nur endogene Information, also der Inhalt der eingegebenen Texte zur Verfügung. Die Prüfung des Vorhandenseins von Merkmalen beschränkt sich also auf Bereich des Textkörpers. \cite{sebastiano}
+
+\section{\Acrlong{ae}}
+\gls{ae} bezeichnet die Aufgabe, z.B. Informationseinheiten wie Namen, Organisation und Ortsbezeichnungen oder numerische Ausdrücke wie Zeiten, Datumsangabgen oder Prozentangaben aus Texten zu extrahieren und also solche zu kennzeichnen.
+Die Anwendung, die Annotationen nutzt, bestimmt, was als benannte Entität zählt.\footnote{Vgl. \cite{mikheev1999named}}
+Um diese benannten Entitäten zu erhalten sind zwei Schritte erforderlich. 
 \begin{enumerate}
 	\item Segmentierung
-	\item Classification
-	\item Association
-	\item Deduplication
+	\item Klassifizierung
 \end{enumerate}
-\footnote{\cite{mccallum2005information}}
-Segmentation 
-Dayne Freitag description
-differenzierung von einzelnen slots
-Es wird davon ausgegangen, dass im System Kategorien bzw. Klassen definiert sind, die jeweils ein bestimmtes Schema bzw. eine Vorlage vorgeben. Diese Vorlage bestimmt die Struktur, also die einzelnen Felder einer Instanz dieser Klasse. Eine Instanz stellt hier einen im System zu speichernden Datensatz dar. Als Extraktion wird der Vorgang bezeichnet, bei dem einzelne Entitäten, also die Werte eines Formulars, aus der Eingabe gewonnen werden.
+Als Erstes wird der Text segmentiert. Dieser Vorgang wird im englischen auch als Tokenization bezeichnet.
+Das Ergebnis dieses Schrittes ist im besten Fall ein Sammlung aller nicht mehr sinnvoll zu teilenden Textbestandteile. Diese Bestandteile, auch Zeichen genannt, sind häufig einzelne Worte, also durch Leer- oder Satzzeichen getrennte Zeichenketten, beschränken sich allerdings nicht darauf. Z.B. der Firmennamen oder Telefonnummern können auch Leerzeichen enthalten und ist trotzdem nicht mehr unbedingt sinnvoll trennbar.
+Die einzelnen Zeichen werden dann auf das vorhandensein von Merkmalen hin analysiert und einer der für die Aufgabe charakterisierten Klassen zugewiesen.
+Dabei definiert der Merkmalsraum Merkmale drei verschiedener Arten.\footnote{Vgl. \cite{manning2012information}}
+\begin{itemize}
+	\item Merkmale der Wortebene
+	\item Merkmale der Wörterbuchsuche
+	\item Dokument- und Korpusmerkmale
+		\captionof{table}{Merkmalsraum der Zeichen in der automatischen Entitätserkennung}
+\end{itemize}
+\footnotetext{Vgl. \cite{nadeau2007survey}}
+Der Merkmalsraum der Zeichen in der \gls{ae} wird in \autoref{ch:strategie} genutzt, um Domänenspezifische Erkennung durchzuführen, d.h. die Möglichkeiten der bereits gegebenen Technologien zu ersetzen.\footnote{Vgl. \cite{nadeau2007survey}} 
+\gls{ae} ist auch eine Unteraufgabe der Informationsextraktion\footnote{Vgl. \cite{manning2012information}}, das Feld, das im folgenden betrachtet wird.
 
+\section{\acrlong{ie}}
+Informationsextraktion befasst sich mit dem Problem, relevante Information aus Texten zu extrahieren. 
+Dabei wird die Struktur, meist das Schema für einen Datensatz bzw.  Datenbankeintrag vorgegeben, die die extrahierten Daten annehmen sollen.
+Diese Struktur zeichnet sich als eine Zusammenstellung von typisierten Feldern aus.
+Die ersten beiden Schritte, Segmentierung und Klassifikation wurden bereits im letzten Abschnitt besprochen.
+Auf die \gls{ae} folgt die Assoziation. Das heiß, dass die Zusammengehörigkeit der einzelnen extrahierten Entitäten bestimmt wird.
+Somit erhält man einen Satz typisierter Felder die zusammen sinnvoll einen Datensatz bilden können.
+Die Werte der Felder werden danach normalisiert, also in ein einheitliches Format gebracht.
+Zuletzt werden die Datensätze dedupliziert. Dabei wird redundante Information kollabiert, um zu verhindern, dass Duplikate ihn der Datenbank vermerkt werden.
+\footnote{Vgl. \cite{mccallum2005information}}
 
-\section{Klassifikation}
-D. Michie  D. J. Spiegelhalter  and C. C. Taylor beschreiben Klassifikation im Allgemeinen als Aufgabe, Vorhersagen oder Entscheidungen auf Basis momentan verfügbarer Information zu treffen. In "Machine Learning, Neural and Statistical Classification" beschränken sie diese Aufgabe auf die Einordnung eines Falles, oder im Kontext dieser Projektarbeit auch Objekt genannt, in eine von mehreren vorgegeben Kategorien. Wenn in dieser Projektarbeit von Klassifikation die Rede ist, dann ist auch die zuletzt beschriebene Aufgabe gemeint. Diese Art der Klassifikation, also die Einordnung einer Objekt in eine einzelne Kategorie bzw. die Zuordnung zu einer spezifischen Klasse wird als Multiclass Classification bezeichnet. In gängiger Literatur ist zudem von zwei weiteren Formen der Klassifikation die Rede: Binäre Klassifikation, bei der eine Objekt in eine von genau zwei Kategorien eingeordnet wird und Multilabel Classification, bei der einer Objekt keine bis mehrere Klassen bzw. "Labels" zugewiesen werden.\footnote{\cite{michie1994machine}}
-In der zuletzt erwähnten Publikation werden drei verschiedene Methoden zur Klassifikation beschrieben.
-Um Entitäten in einzelne Klassen einzuordnen, müssen letztere als ein Satz von Merkmalen definiert werden. Merkmale sind Schlagwörter oder charakteristische Eigenschaften, die dazu konstruiert sind, algorhithmisch weiterverarbeitet zu werden. \footnote{\cite{nadeau2007survey}} Die Ausprägung dieser Merkmale bei den einzelnen Entitäten wird dann genutzt, um möglichst genau die Zugehörigkeit einer Entität zu einer Klasse zu bestimmen.
+% \section{Normalisierung}
 
-\section{Maschinelles Lernen}
-Die bis hier beschriebenen Formen des maschinellen Lernens sind als überwachtes Lernen zu bezeichnen. Das heißt, dass die Klassen, in die die Objekte eingeordnet werden sollen, bereits vorgegeben sind. Beim unüberwachten Lernen hingegen wird die Verteilung der einzelnen Objekte im Merkmalsraum betrachtet. Anhand dieser Verteilung werden die Objekte dann entsprechend ihrer Gemeinsamkeiten und Unterschiede in Gruppen eingeteilt. Die Einteilung in Gruppen ohne vorgegebene Klassen wird als Clustering bezeichnet.
-Machine Learning
-Neurale Netzwerke
+% Rechtschreibkorrekture
+% reading a term from a document;
+% comparing the term to at least one entry of a selected field in a contact information database; and
+% indicating the term is an unrecognized term, unless the term matches an entry of the selected field in the contact information database.
 
-\footnote{\cite{nadeau2007survey}}
-Um zu dem Resultat: 2 Schritte Vorverarbeitung, also Extraktion von Entitäten und 
-Bias: input collection
-Noise
-Classification Algorithm
-\section{Textformat}
+% \section{Maschinelles Lernen}
+% Die bis hier beschriebenen Formen des maschinellen Lernens sind als überwachtes Lernen zu bezeichnen. Das heißt, dass die Klassen, in die die Objekte eingeordnet werden sollen, bereits vorgegeben sind. Beim unüberwachten Lernen hingegen wird die Verteilung der einzelnen Objekte im Merkmalsraum betrachtet. Anhand dieser Verteilung werden die Objekte dann entsprechend ihrer Gemeinsamkeiten und Unterschiede in Gruppen eingeteilt. Die Einteilung in Gruppen ohne vorgegebene Klassen wird als Clustering bezeichnet.
+% Machine Learning
+% Neurale Netzwerke
+
+% Um zu dem Resultat: 2 Schritte Vorverarbeitung, also Extraktion von Entitäten und 
+% Bias: input collection
+% Noise
+% Classification Algorithm
+\section{Unstrukturierte Texte}
+Der Nutzer nutzt das System dazu, Eingaben ohne Eingabemaske zu tätigen und trotzdem die gleiche Information zu erfassen.
+Deshalb müssen wir davon ausgehen, dass das System Texte entegegen nimmt, die möglicherweise keine grammatikalischen Strukturen aufweisen.
+Diese Textformat, das auch als Notiz zu bezeichenen ist, kann ebenfalls Rechtschreibfehler und typographische Fehler enthalten.
+In einer 2006 von Eszter Hargittai durchgeführten Studie schafften es nur 35 von 100 Teilnehmern, verschiedene Texteingaben fehlerfrei zu tätigen. 
+Dabei wurde die Aufgabe gestellt, nach Informationen in u.A. den Bereichen Medizin, Kultur und Politik zu suchen.
+Hargittai weist auf erhöhte Kosten hin, die mit fehlerhaft Eingegeben Texten einhergen. In unserem Fall verhält sich die Problematik etwas anders.
+Denn während Eingabefehler bei der Informationssuche den Nutzer ggf. auf falsche Wege leiten, stellen sie uns hier vor zwei große Probleme.
+spelling correcte  because of system and following financial loss
+problem of notes - bad spelling
 Präzision
-keine Prosa
-informell
 heuristische Methoden die speziell auf die Problemdomäne zugeschnitten sind.
 welche Teile des systems werden modelliert etc.
-\section{Maschinelles Lernen}
-\section{Merkmalsbildung}
-part of preprocessing
-Merkmale / Merkmalsraum
-\section{Plattform}
+\footnote{\cite{hargittai2006hurdles}}
+% \section{Maschinelles Lernen}
+% \section{Merkmalsbildung}
+% part of preprocessing
+% Merkmale / Merkmalsraum
+% \section{Plattform}
 

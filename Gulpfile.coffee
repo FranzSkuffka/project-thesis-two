@@ -34,4 +34,6 @@ gulp.task 'clean', ['render'], ->
          "*.aux",
          "content/*.aux",
          '*.bib'
+	 '*.acr'
     ]
+     projektarbeit.acn

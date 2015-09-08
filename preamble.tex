@@ -5,7 +5,7 @@
 	parskip=half,
 	twoside=false,
 	numbers=noenddot,	% Kein Punkt am Ende einer Überschrift
-	%draft=true,			% Deckt Schwächen auf: overfull und full boxes werden markiert; Bilder werden nicht geladen
+	draft=true,			% Deckt Schwächen auf: overfull und full boxes werden markiert; Bilder werden nicht geladen
 	bibliography=totoc,	% Literaturverzeichnis ins Inhaltsverzeichnis aufnehmen
 	listof=totoc,		% Tabellen- und Abbildungsverzeichnis ins Inhaltsverzeichnis aufnehmen
 	titlepage=true,		% Separate Titelseite; Gestaltung mit Hilfe der Titlepage-Umgebung
@@ -21,9 +21,9 @@
 \usepackage{fontspec}
 
 \setmainfont[
-BoldFont=Arial Bold.ttf,
-ItalicFont=Arial Italic.ttf,
-BoldItalicFont=Arial Bold Italic.ttf
+	BoldFont=Arial Bold.ttf,
+	ItalicFont=Arial Italic.ttf,
+	BoldItalicFont=Arial Bold Italic.ttf
 ]{Arial.ttf}
 
 \usepackage{titlesec}
@@ -37,8 +37,8 @@ BoldItalicFont=Arial Bold Italic.ttf
 % Source-Code-Listings
 \usepackage{listings}
 \lstset{
-    language=SQL,
-    basicstyle=\ttfamily
+	language=SQL,
+	basicstyle=\ttfamily
 } 
 
 % BibTeX-Symbol
@@ -58,7 +58,25 @@ BoldItalicFont=Arial Bold Italic.ttf
 
 % Abkürzungsverzeichnis
 \usepackage[printonlyused, withpage]{acronym}
+
 % Abstand mit Punkten füllen
+
+\usepackage{caption}
+\DeclareCaptionFormat{custom}{
+	\itshape#1#2#3
+}
+\DeclareCaptionFont{mdit}{\mdseries\itshape}
+\captionsetup[table]{
+	format=custom,
+	labelsep=newline,
+	justification=centering,
+	font=small,
+	labelfont=mdit,
+	belowskip=12pt,
+	aboveskip=18pt,
+}
+\usepackage{floatrow}
+\floatsetup[table]{capposition=top}
 
 % Tiefe des Inhaltsverzeichnisses
 \setcounter{tocdepth}{2}
@@ -104,8 +122,7 @@ BoldItalicFont=Arial Bold Italic.ttf
 \onehalfspacing
 
 % Literaturverzeichnis
-%\usepackage[backend=bibtex,style=authoryear]{biblatex}
-\usepackage[backend=bibtex,style=alphabetic]{biblatex}
+\usepackage[backend=bibtex,style=verbose-ibid]{biblatex}
 \bibliography{./literature/Literature.bib}
 \renewcommand{\bibname}{Literaturverzeichnis}
 %Referenz zu URLs
@@ -165,6 +182,12 @@ BoldItalicFont=Arial Bold Italic.ttf
 % Zitate in neue Zeile rücken
 \usepackage{breakcites}
 
-% Glossary capitalization
+% Format Glossary
 \usepackage{mfirstuc}
-% \renewcommand{\glsnamefont}[2][]{\capitalisewords{#1}\xspace#2}
+\renewglossarystyle{listdotted}{%
+	\renewcommand*{\glossentry}[2]{
+	\item[\glsentryitem{##1}] \glossentryname{##1} \dotfill \glossentrydesc{##1}
+	}
+}
+\setglossarystyle{listdotted}%
+

@@ -1,31 +1,21 @@
-\chapter{Theoretische Herangehensweise}
-Nach der Definition der funktionalen Anforderungen an das System wird nun die theoretische Herangehensweise beschrieben. Dabei wird die Funktion des Systems analog zu den funktionalen Anforderungen in nacheinander geschaltete Mechanismen geteilt.
+\chapter{Strategie}
+\label{chap:strategie}
+\section{Charakterisierung}
+Im folgenden wird das Klassenmodell definiert und die einzelnen Klassen charakterisiert. Hierfür werden in CRM-Software häufig verfügbare Datentypen dargestellt. Die gelisteten Klassen stellen eine Auswahl aus in CRM-Software häufig anzutreffenden Datentypen dar.
 
 \section{Klassifikation}
+ The relative frequency with which the classes occur in the population of interest, expressed formally as the prior probability distribution.
+￼￼￼
+Sec. 2.5] Costs of misclassification 13
+2. An implicit or explicit criterion for separating the classes: we may think of an un- derlying input/output relation that uses observed attributes to distinguish a random individual from each class.
+3. The cost associated with making a wrong classification.
 
-Ziel: Datensatz
-% Merkmale
-Bei der Entwicklung der Vorgehensweise zur Klassifikation der eingegebenen Texte wird davon ausgegangen, dass keine exogene Information zur Verfügung steht. Das heißt, dass der Klassifikationsmechanismus nicht auf Metadaten wie z.B. Autor oder Uhrzeit zugreifen kann. Somit steht nur endogene Information, also der Inhalt der eingegebenen Texte zur Verfügung. Die Prüfung des Vorhandenseins von Merkmalen beschränkt sich also auf Bereich des Textkörpers. \cite{sebastiano}
-
-Beziehung Schema, Merkmale, Klasse
 Zur Unterscheidung müssen jeweils die Merkmale der einzelnen Klassen ausgemacht werden. Dieser Vorgang wird in dieser Projektarbeit als Charakterisierung bezeichnet. Zur Charakterisierung wird hier das Schema herangezogen, in dem ein Datensatz der jeweiligen Kategorie gespeichert werden soll. Die Schemata der einzelnen Kategorien definieren jeweils unterschiedliche Felder. 
 Jedes Feld hat einen bestimmten Typ bzw. eigene Merkmale.
 Die Verteilung von Feldern verschiedener Typen auf die einzelnen Schemata ergeben im Idealfall ein Muster, das nur bei einem einzigen Schema zu beobachten ist.
 Tabelle X zeigt, welche Felder die einzelnen Schemata definieren.
 
-\begin{tabular}{lll}
-    Klasse & Aufgabe & Servicefall \\
-    Schließen \\
-    Status \\
-    Betreff \\
-    Kontakt \\
-    Telefon \\
-    Fällig am \\
-    Mitarbeiter \\
-\end{tabular}
-
 nur boolsche Merkmale
-problem of notes - bad spelling
 Falschpositiv/Falschnegativ
 Dieses Muster wird nun zur Charakterisierung der einzelnen Klassen genutzt. Somit ist die Merkmalsverteilung der Klassen analog zur Verteilung der Felder auf den Schemata der einzelnen Kategorien. 
 Bei der Betrachtung der Schemata fällt auf, dass die einzelnen Felder immer entweder vorhanden oder nicht vorhanden sind. Da sich die Merkmale analog zu den Feldern der Schemata verhalten, sind erstere als boolsche Merkmale zu bezeichnen. Das heißt, dass sie die Werte 'vorhanden' und 'nicht vorhanden' bzw. 1 oder 0 annehmen können. Nach der Charakterisierung der Klassen werden nun die Möglichkeiten betrachtet, das Vorhandensein von Information, die den einzelnen Feldern entsprechen, und somit die Ausprägung der Merkmale als 'vorhanden ', festzustellen. 
@@ -45,7 +35,6 @@ Bei der Analyse der verschiedenen Schemata fallen auch grundsätzlich verschiede
 
 Bei der Klassifikation der Eingabe wird zunächst das Vorhandensein von Informationen
 
-Unabhängig davon wird auch die Möglichkeit in Betracht gezogen, dass der Nutzer selbst bereits die Kategorie des vorgenommenen Eintrags innerhalb jenem vermerkt.
 
 
 
